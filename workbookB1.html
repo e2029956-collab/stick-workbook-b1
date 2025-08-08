@@ -1,0 +1,3523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stick Episode 1 Workbook - B1+ Level</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #2ecc71;
+            --warning: #f39c12;
+            --correct: #d4edda;
+            --incorrect: #f8d7da;
+            --series-color: #9b59b6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--series-color) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+        
+        header::after {
+            content: "";
+            position: absolute;
+            bottom: -70px;
+            left: -70px;
+            width: 250px;
+            height: 250px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+        }
+        
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .episode-info {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 30px;
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 500;
+        }
+        
+        /* Стили для вкладок */
+        .tabs {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 3px solid var(--secondary);
+            overflow-x: auto;
+        }
+        
+        .tab {
+            padding: 15px 25px;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--dark);
+            transition: all 0.3s;
+            white-space: nowrap;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -3px;
+        }
+        
+        .tab:hover {
+            background: #e9ecef;
+        }
+        
+        .tab.active {
+            color: var(--secondary);
+            border-bottom-color: var(--secondary);
+            background: white;
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 30px;
+            animation: fadeIn 0.5s;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .section {
+            margin-bottom: 30px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+            border-left: 5px solid var(--secondary);
+        }
+        
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title i {
+            margin-right: 15px;
+            color: var(--secondary);
+        }
+        
+        .task {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .task-title {
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .question {
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .option:hover {
+            background: #f8f9fa;
+        }
+        
+        .option input {
+            margin-right: 10px;
+        }
+        
+        .matching-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        
+        .matching-table th, 
+        .matching-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .matching-table th {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .matching-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        input[type="text"], 
+        textarea, 
+        select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            margin-bottom: 15px;
+            transition: all 0.3s;
+        }
+        
+        input[type="text"]:focus, 
+        textarea:focus, 
+        select:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+        
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s;
+            margin: 10px 5px;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .btn-success {
+            background: var(--success);
+        }
+        
+        .btn-success:hover {
+            background: #27ae60;
+            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
+        }
+        
+        .btn-warning {
+            background: var(--warning);
+        }
+        
+        .btn-warning:hover {
+            background: #d35400;
+            box-shadow: 0 5px 15px rgba(243, 156, 18, 0.3);
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+        }
+        
+        .btn-primary:hover {
+            background: #1a252f;
+            box-shadow: 0 5px 15px rgba(44, 62, 80, 0.3);
+        }
+        
+        .feedback {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 6px;
+            display: none;
+        }
+        
+        .feedback.correct {
+            background: var(--correct);
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .feedback.incorrect {
+            background: var(--incorrect);
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .answer-key {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e9ecef;
+            border-radius: 6px;
+            border-left: 4px solid var(--secondary);
+            display: none;
+        }
+        
+        .answer-key h4 {
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .correct-answer {
+            background-color: var(--correct);
+            color: #155724;
+        }
+        
+        .incorrect-answer {
+            background-color: var(--incorrect);
+            color: #721c24;
+        }
+        
+        /* Стили для аудио */
+        .audio-container {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .audio-player {
+            width: 100%;
+            margin: 15px 0;
+        }
+        
+        .audio-instructions {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 6px;
+            padding: 15px;
+            margin: 15px 0;
+            color: #856404;
+        }
+        
+        .audio-instructions h4 {
+            margin-bottom: 10px;
+            color: var(--warning);
+        }
+        
+        .audio-instructions ol {
+            margin-left: 20px;
+        }
+        
+        .audio-instructions li {
+            margin-bottom: 8px;
+        }
+        
+        /* Стили для игры Мемори */
+        .memory-game-container {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            margin: 20px auto;
+            padding: 30px;
+            max-width: 950px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .memory-game-container .memory-title {
+            color: #3498db;
+            font-size: 32px;
+            font-weight: bold;
+            margin: 0 0 20px 0;
+            text-align: center;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .memory-game-container #memory-status {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+        
+        .memory-game-container #memory-game {
+            margin-top: 20px;
+            max-width: 900px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .memory-game-container .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            cursor: pointer;
+            user-select: none;
+            padding: 15px;
+            height: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 14px;
+            position: relative;
+            transition: transform 0.3s ease;
+            perspective: 600px;
+        }
+        
+        .memory-game-container .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s;
+            transform-style: preserve-3d;
+        }
+        
+        .memory-game-container .card.flipped .card-inner {
+            transform: rotateY(180deg);
+        }
+        
+        .memory-game-container .card-front, 
+        .memory-game-container .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+            backface-visibility: hidden;
+            padding: 10px;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+        
+        .memory-game-container .card-front {
+            background: #3498db;
+            color: white;
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+            font-weight: bold;
+            font-size: 26px;
+        }
+        
+        .memory-game-container .card-back {
+            background: #fff;
+            color: #333;
+            transform: rotateY(180deg);
+            font-size: 14px;
+            line-height: 1.2;
+            overflow-y: auto;
+        }
+        
+        .memory-game-container #memory-restartBtn, 
+        .memory-game-container #memory-showAnswersBtn {
+            margin: 5px;
+            padding: 12px 24px;
+            font-size: 16px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        
+        .memory-game-container #memory-restartBtn:hover, 
+        .memory-game-container #memory-showAnswersBtn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .memory-game-container #memory-showAnswersBtn {
+            background: white;
+            color: #3498db;
+            border: 2px solid #3498db;
+        }
+        
+        .memory-game-container #memory-showAnswersBtn:hover {
+            background: #f8f9fa;
+            color: #2980b9;
+            border-color: #2980b9;
+        }
+        
+        .memory-game-container .card.revealed .card-inner {
+            transform: rotateY(180deg);
+        }
+        
+        .memory-game-container .card.matched {
+            background: #d4edda;
+            border: 2px solid #2ecc71;
+        }
+        
+        .memory-game-container .card.matched .card-front {
+            background: #2ecc71;
+        }
+        
+        /* Стили для Flashcards */
+        .flashcards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .flashcard {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            height: 200px;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .flashcard:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .flashcard-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        
+        .flashcard.flipped .flashcard-inner {
+            transform: rotateY(180deg);
+        }
+        
+        .flashcard-front, .flashcard-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+        
+        .flashcard-front {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+        
+        .flashcard-back {
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            color: white;
+            transform: rotateY(180deg);
+            font-size: 1rem;
+        }
+        
+        .flashcard-controls {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        /* Стили для Drag and Drop */
+        .drag-drop-container {
+            margin: 20px 0;
+        }
+        
+        .drag-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .drag-item {
+            background: var(--secondary);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 6px;
+            cursor: move;
+            user-select: none;
+            transition: all 0.3s;
+        }
+        
+        .drag-item:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        .drop-zones {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .drop-zone {
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            min-height: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s;
+        }
+        
+        .drop-zone.drag-over {
+            border-color: var(--secondary);
+            background: rgba(52, 152, 219, 0.1);
+        }
+        
+        .drop-zone .dropped-item {
+            background: var(--success);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            margin: 5px 0;
+            width: 100%;
+            text-align: center;
+        }
+        
+        /* Стили для Timeline */
+        .timeline-container {
+            position: relative;
+            margin: 30px 0;
+        }
+        
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: var(--secondary);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin: 30px 0;
+            width: 45%;
+            cursor: move;
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-item.dragging {
+            opacity: 0.5;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 55%;
+        }
+        
+        .timeline-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-right: 30px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 30px;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            background: var(--secondary);
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.2);
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -10px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -10px;
+        }
+        
+        .timeline-title {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .timeline-description {
+            color: #666;
+        }
+        
+        .timeline-feedback {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 6px;
+            display: none;
+        }
+        
+        .timeline-feedback.correct {
+            background: var(--correct);
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .timeline-feedback.incorrect {
+            background: var(--incorrect);
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        /* Стили для Quiz */
+        .quiz-container {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            margin: 20px 0;
+        }
+        
+        .quiz-question {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .quiz-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .quiz-option {
+            background: #f8f9fa;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+        
+        .quiz-option:hover {
+            border-color: var(--secondary);
+            background: rgba(52, 152, 219, 0.05);
+        }
+        
+        .quiz-option.selected {
+            border-color: var(--secondary);
+            background: rgba(52, 152, 219, 0.1);
+        }
+        
+        .quiz-option.correct {
+            border-color: var(--success);
+            background: rgba(46, 204, 113, 0.1);
+        }
+        
+        .quiz-option.incorrect {
+            border-color: var(--accent);
+            background: rgba(231, 76, 60, 0.1);
+        }
+        
+        .quiz-result {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .quiz-result.show {
+            display: block;
+        }
+        
+        .quiz-result.correct {
+            background: var(--correct);
+            color: #155724;
+        }
+        
+        .quiz-result.incorrect {
+            background: var(--incorrect);
+            color: #721c24;
+        }
+        
+        /* Стили для Character Cards */
+        .character-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .character-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .character-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .character-image {
+            height: 200px;
+            background: var(--light);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3rem;
+            color: var(--secondary);
+        }
+        
+        .character-info {
+            padding: 20px;
+        }
+        
+        .character-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .character-description {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .character-traits {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .trait {
+            background: var(--secondary);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+        
+        /* Стили для уведомлений */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            background: var(--success);
+            color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+            transform: translateX(150%);
+            transition: transform 0.3s ease;
+        }
+        
+        .notification.show {
+            transform: translateX(0);
+        }
+        
+        .notification.error {
+            background: var(--accent);
+        }
+        
+        /* Стили для кнопки отправки */
+        .submit-section {
+            text-align: center;
+            padding: 30px;
+            background: #f8f9fa;
+            border-top: 1px solid #e9ecef;
+            margin-top: 30px;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, var(--success), #27ae60);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(46, 204, 113, 0.4);
+        }
+        
+        .submit-btn:active {
+            transform: translateY(1px);
+        }
+        
+        .submit-btn:disabled {
+            background: #95a5a6;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        /* Стили для модального окна */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            animation: fadeIn 0.3s;
+        }
+        
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 30px;
+            border-radius: 15px;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+            animation: slideIn 0.3s;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .close:hover {
+            color: var(--accent);
+        }
+        
+        .modal-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .modal-body {
+            margin-bottom: 20px;
+        }
+        
+        .modal-footer {
+            text-align: right;
+        }
+        
+        /* Стили для индикатора прогресса */
+        .progress-container {
+            margin: 20px 0;
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+        }
+        
+        .progress-bar {
+            height: 20px;
+            background: #e9ecef;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--secondary), var(--success));
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        
+        .progress-text {
+            text-align: center;
+            font-weight: 500;
+            color: var(--dark);
+        }
+        
+        /* Стили для проверки ИИ */
+        .ai-check {
+            margin-top: 10px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            border-left: 4px solid var(--secondary);
+            display: none;
+        }
+        
+        .ai-check.show {
+            display: block;
+        }
+        
+        .ai-check h4 {
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .ai-feedback {
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+        
+        .ai-feedback.good {
+            background: var(--correct);
+            color: #155724;
+        }
+        
+        .ai-feedback.needs-improvement {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+            
+            .memory-game-container #memory-game {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+            
+            .flashcards-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                width: calc(100% - 60px);
+                left: 60px !important;
+            }
+            
+            .timeline-dot {
+                left: 20px !important;
+            }
+            
+            .modal-content {
+                width: 95%;
+                margin: 15% auto;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Stick Episode 1 Workbook</h1>
+            <div class="subtitle">Interactive Tasks for B1+ Level</div>
+            <div class="episode-info">
+                <i class="fas fa-film"></i> Series: Stick | Episode: 1 | Level: B1+
+            </div>
+        </header>
+        
+        <!-- Вкладки -->
+        <div class="tabs">
+            <button class="tab active" onclick="openTab(event, 'vocabulary')">
+                <i class="fas fa-book"></i> Vocabulary
+            </button>
+            <button class="tab" onclick="openTab(event, 'grammar')">
+                <i class="fas fa-language"></i> Grammar
+            </button>
+            <button class="tab" onclick="openTab(event, 'listening')">
+                <i class="fas fa-headphones"></i> Listening
+            </button>
+            <button class="tab" onclick="openTab(event, 'speaking')">
+                <i class="fas fa-comments"></i> Speaking
+            </button>
+            <button class="tab" onclick="openTab(event, 'critical')">
+                <i class="fas fa-brain"></i> Critical Thinking
+            </button>
+            <button class="tab" onclick="openTab(event, 'cultural')">
+                <i class="fas fa-globe"></i> Cultural Context
+            </button>
+            <button class="tab" onclick="openTab(event, 'interactive')">
+                <i class="fas fa-gamepad"></i> Interactive
+            </button>
+        </div>
+        
+        <div class="content">
+            <!-- Вкладка Vocabulary -->
+            <div id="vocabulary" class="tab-content active">
+                <div class="section">
+                    <h2 class="section-title"><i class="fas fa-book"></i> Vocabulary Tasks</h2>
+                    
+                    <!-- Task A: Multiple Choice -->
+                    <div class="task">
+                        <div class="task-title">A. Multiple Choice — Choose the correct meaning</div>
+                        <div class="question">What does the phrase "wet my beak" mean?</div>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="q1" id="q1a" value="a">
+                                <label for="q1a">a) To get an advance payment or a share of profits</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q1" id="q1b" value="b">
+                                <label for="q1b">b) To perform very well under pressure</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q1" id="q1c" value="c">
+                                <label for="q1c">c) To think carefully about a decision</label>
+                            </div>
+                        </div>
+                        <button class="btn" onclick="checkAnswer('q1', 'a')">Check Answer</button>
+                        <div id="feedback-q1" class="feedback"></div>
+                    </div>
+                    
+                    <!-- Task B: Matching Idioms -->
+                    <div class="task">
+                        <div class="task-title">B. Matching Idioms and Definitions</div>
+                        <p>Match the expressions in Column A with their meanings in Column B:</p>
+                        <table class="matching-table">
+                            <tr>
+                                <th>Column A</th>
+                                <th>Column B</th>
+                            </tr>
+                            <tr>
+                                <td>1. Wet my beak</td>
+                                <td>
+                                    <select id="match1">
+                                        <option value="">Select meaning</option>
+                                        <option value="a">a) To get an advance or a share of money</option>
+                                        <option value="b">b) Slightly overweight or bulky</option>
+                                        <option value="c">c) Someone once successful but no longer is</option>
+                                        <option value="d">d) To fail due to pressure or nervousness</option>
+                                        <option value="e">e) To think carefully before making a decision</option>
+                                        <option value="f">f) To recover after difficulties</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2. Chunky</td>
+                                <td>
+                                    <select id="match2">
+                                        <option value="">Select meaning</option>
+                                        <option value="a">a) To get an advance or a share of money</option>
+                                        <option value="b">b) Slightly overweight or bulky</option>
+                                        <option value="c">c) Someone once successful but no longer is</option>
+                                        <option value="d">d) To fail due to pressure or nervousness</option>
+                                        <option value="e">e) To think carefully before making a decision</option>
+                                        <option value="f">f) To recover after difficulties</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3. Never-was / Has-been</td>
+                                <td>
+                                    <select id="match3">
+                                        <option value="">Select meaning</option>
+                                        <option value="a">a) To get an advance or a share of money</option>
+                                        <option value="b">b) Slightly overweight or bulky</option>
+                                        <option value="c">c) Someone once successful but no longer is</option>
+                                        <option value="d">d) To fail due to pressure or nervousness</option>
+                                        <option value="e">e) To think carefully before making a decision</option>
+                                        <option value="f">f) To recover after difficulties</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4. To choke</td>
+                                <td>
+                                    <select id="match4">
+                                        <option value="">Select meaning</option>
+                                        <option value="a">a) To get an advance or a share of money</option>
+                                        <option value="b">b) Slightly overweight or bulky</option>
+                                        <option value="c">c) Someone once successful but no longer is</option>
+                                        <option value="d">d) To fail due to pressure or nervousness</option>
+                                        <option value="e">e) To think carefully before making a decision</option>
+                                        <option value="f">f) To recover after difficulties</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5. Mull it over</td>
+                                <td>
+                                    <select id="match5">
+                                        <option value="">Select meaning</option>
+                                        <option value="a">a) To get an advance or a share of money</option>
+                                        <option value="b">b) Slightly overweight or bulky</option>
+                                        <option value="c">c) Someone once successful but no longer is</option>
+                                        <option value="d">d) To fail due to pressure or nervousness</option>
+                                        <option value="e">e) To think carefully before making a decision</option>
+                                        <option value="f">f) To recover after difficulties</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>6. Get back on your feet</td>
+                                <td>
+                                    <select id="match6">
+                                        <option value="">Select meaning</option>
+                                        <option value="a">a) To get an advance or a share of money</option>
+                                        <option value="b">b) Slightly overweight or bulky</option>
+                                        <option value="c">c) Someone once successful but no longer is</option>
+                                        <option value="d">d) To fail due to pressure or nervousness</option>
+                                        <option value="e">e) To think carefully before making a decision</option>
+                                        <option value="f">f) To recover after difficulties</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                        <button class="btn" onclick="checkMatching()">Check Answers</button>
+                        <div id="matching-feedback" class="feedback"></div>
+                    </div>
+                    
+                    <!-- Task C: Fill in the blanks -->
+                    <div class="task">
+                        <div class="task-title">C. Fill in the blanks</div>
+                        <p>Use words from: wet my beak, choke, chunky, mull it over, has-been</p>
+                        
+                        <div class="question">1. After his meltdown on live TV, Pryce was considered a ________.</div>
+                        <input type="text" id="blank1" placeholder="Your answer...">
+                        
+                        <div class="question">2. Some athletes ________ under pressure and miss their chance.</div>
+                        <input type="text" id="blank2" placeholder="Your answer...">
+                        
+                        <div class="question">3. I will ________ the proposal before giving an answer.</div>
+                        <input type="text" id="blank3" placeholder="Your answer...">
+                        
+                        <div class="question">4. He's a bit ________ but still plays well.</div>
+                        <input type="text" id="blank4" placeholder="Your answer...">
+                        
+                        <div class="question">5. Many see him as a ________ of the sport.</div>
+                        <input type="text" id="blank5" placeholder="Your answer...">
+                        
+                        <button class="btn" onclick="checkBlanks()">Check Answers</button>
+                        <div id="blanks-feedback" class="feedback"></div>
+                    </div>
+                    
+                    <!-- Task D: Write sentences -->
+                    <div class="task">
+                        <div class="task-title">D. Write sentences</div>
+                        <p>Create your own sentences using the idioms from the vocabulary list.</p>
+                        
+                        <div class="question">1. Write a sentence using "choke":</div>
+                        <textarea id="sentence1" placeholder="Your sentence..." data-ai-check="true" data-keywords="choke,pressure,nervous,fail"></textarea>
+                        <div id="ai-check-sentence1" class="ai-check"></div>
+                        
+                        <div class="question">2. Write a sentence using "mull it over":</div>
+                        <textarea id="sentence2" placeholder="Your sentence..." data-ai-check="true" data-keywords="mull,think,consider,decision"></textarea>
+                        <div id="ai-check-sentence2" class="ai-check"></div>
+                        
+                        <div class="question">3. Write a sentence using "has-been":</div>
+                        <textarea id="sentence3" placeholder="Your sentence..." data-ai-check="true" data-keywords="has-been,former,past,success"></textarea>
+                        <div id="ai-check-sentence3" class="ai-check"></div>
+                        
+                        <button class="btn" onclick="showExampleSentences()">Show Example Sentences</button>
+                        <button class="btn btn-warning" onclick="checkAISentences()">Check with AI</button>
+                        <div id="sentences-example" class="answer-key">
+                            <h4>Example Sentences:</h4>
+                            <p>1. He really choked during the final match and lost his chance.</p>
+                            <p>2. I need time to mull it over before making a decision.</p>
+                            <p>3. The player was called a has-been after retiring early.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Вкладка Grammar -->
+            <div id="grammar" class="tab-content">
+                <div class="section">
+                    <h2 class="section-title"><i class="fas fa-language"></i> Grammar Tasks</h2>
+                    
+                    <!-- Task A: Fill in the blanks -->
+                    <div class="task">
+                        <div class="task-title">A. Fill in the blanks (Past Simple or Present Perfect)</div>
+                        <p>Complete the sentences with the correct verb form:</p>
+                        
+                        <div class="question">1. Pryce _______ (stop) playing professional golf after his breakdown.</div>
+                        <input type="text" id="grammar1" placeholder="Your answer...">
+                        
+                        <div class="question">2. They _______ (not decide) if Santi will participate yet.</div>
+                        <input type="text" id="grammar2" placeholder="Your answer...">
+                        
+                        <div class="question">3. Santi's mother _______ (be) worried for a long time.</div>
+                        <input type="text" id="grammar3" placeholder="Your answer...">
+                        
+                        <div class="question">4. Pryce _______ (try) coaching young players before.</div>
+                        <input type="text" id="grammar4" placeholder="Your answer...">
+                        
+                        <div class="question">5. Santi _______ (win) several amateur tournaments before quitting.</div>
+                        <input type="text" id="grammar5" placeholder="Your answer...">
+                        
+                        <button class="btn" onclick="checkGrammar()">Check Answers</button>
+                        <div id="grammar-feedback" class="feedback"></div>
+                    </div>
+                    
+                    <!-- Task B: Correct the mistakes -->
+                    <div class="task">
+                        <div class="task-title">B. Correct the mistakes</div>
+                        <p>Identify and correct the errors:</p>
+                        
+                        <div class="question">1. Pryce has lived in the house <u>since</u> two years.</div>
+                        <input type="text" id="correction1" placeholder="Corrected sentence...">
+                        
+                        <div class="question">2. Santi didn't <u>played</u> golf for a long time.</div>
+                        <input type="text" id="correction2" placeholder="Corrected sentence...">
+                        
+                        <div class="question">3. Amber-Linn <u>has sold</u> the house already?</div>
+                        <input type="text" id="correction3" placeholder="Corrected sentence...">
+                        
+                        <div class="question">4. They <u>was</u> hoping to get an advance today.</div>
+                        <input type="text" id="correction4" placeholder="Corrected sentence...">
+                        
+                        <div class="question">5. We <u>are agree</u> about the deal last week.</div>
+                        <input type="text" id="correction5" placeholder="Corrected sentence...">
+                        
+                        <button class="btn" onclick="checkCorrections()">Check Answers</button>
+                        <div id="corrections-feedback" class="feedback"></div>
+                    </div>
+                    
+                    <!-- Task C: Direct to Indirect Speech -->
+                    <div class="task">
+                        <div class="task-title">C. Direct to Indirect Speech</div>
+                        <p>Rewrite the sentences in indirect speech:</p>
+                        
+                        <div class="question">1. Pryce said, "I can't wait to start coaching Santi."</div>
+                        <textarea id="speech1" placeholder="Indirect speech..." data-ai-check="true" data-keywords="said,that,couldn't,coaching"></textarea>
+                        <div id="ai-check-speech1" class="ai-check"></div>
+                        
+                        <div class="question">2. Amber-Linn told Pryce, "You must sign the property transfer."</div>
+                        <textarea id="speech2" placeholder="Indirect speech..." data-ai-check="true" data-keywords="told,had to,property transfer"></textarea>
+                        <div id="ai-check-speech2" class="ai-check"></div>
+                        
+                        <div class="question">3. The manager asked, "Do you have time to meet today?"</div>
+                        <textarea id="speech3" placeholder="Indirect speech..." data-ai-check="true" data-keywords="asked,if,had,time,meet"></textarea>
+                        <div id="ai-check-speech3" class="ai-check"></div>
+                        
+                        <div class="question">4. Santi said, "I'm not interested in playing anymore."</div>
+                        <textarea id="speech4" placeholder="Indirect speech..." data-ai-check="true" data-keywords="said,was not,interested,playing"></textarea>
+                        <div id="ai-check-speech4" class="ai-check"></div>
+                        
+                        <div class="question">5. The lawyer said, "This property transfer is final."</div>
+                        <textarea id="speech5" placeholder="Indirect speech..." data-ai-check="true" data-keywords="said,property transfer,was,final"></textarea>
+                        <div id="ai-check-speech5" class="ai-check"></div>
+                        
+                        <button class="btn" onclick="showSpeechAnswers()">Show Answer Key</button>
+                        <button class="btn btn-warning" onclick="checkAISpeech()">Check with AI</button>
+                        <div id="speech-answers" class="answer-key">
+                            <h4>Answer Key:</h4>
+                            <p>1. Pryce said that he couldn't wait to start coaching Santi.</p>
+                            <p>2. Amber-Linn told Pryce that he had to sign the property transfer.</p>
+                            <p>3. The manager asked if he had time to meet that day.</p>
+                            <p>4. Santi said he was not interested in playing anymore.</p>
+                            <p>5. The lawyer said that the property transfer was final.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Вкладка Listening -->
+            <div id="listening" class="tab-content">
+                <div class="section">
+                    <h2 class="section-title"><i class="fas fa-headphones"></i> Listening & Comprehension</h2>
+                    
+                    <!-- Инструкции по аудио -->
+                    <div class="audio-instructions">
+                        <h4><i class="fas fa-info-circle"></i> Audio Files Instructions</h4>
+                        <p>To use the listening exercises, you need to add audio files to the workbook:</p>
+                        <ol>
+                            <li>Extract audio from Episode 1 of "Stick" (key scenes with dialogues)</li>
+                            <li>Name the files: dialogue1.mp3, dialogue2.mp3, etc.</li>
+                            <li>Place them in the same folder as this HTML file</li>
+                            <li>Update the src attributes in the audio tags below</li>
+                        </ol>
+                        <p><strong>Alternative:</strong> You can use YouTube links or embed videos instead of audio files.</p>
+                    </div>
+                    
+                    <!-- Task A: Fill in the blanks -->
+                    <div class="task">
+                        <div class="task-title">A. Fill in the blanks while listening</div>
+                        <p>Listen to the dialogue between Pryce and Santi and fill in the missing words:</p>
+                        
+                        <!-- Аудиоплеер 1 -->
+                        <div class="audio-container">
+                            <h4>Dialogue 1: First Meeting</h4>
+                            <audio controls class="audio-player">
+                                <!-- ЗАМЕНИТЕ ЭТОТ SRC НА ВАШ АУДИОФАЙЛ -->
+                                <source src="audio/dialogue1.mp3" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                            <p><em>Replace "audio/dialogue1.mp3" with your actual audio file path</em></p>
+                        </div>
+                        
+                        <div class="question">Pryce: I've been watching you, kid. You've got _______.</div>
+                        <input type="text" id="listening1" placeholder="Your answer...">
+                        
+                        <div class="question">Santi: I don't know. I haven't played in a _______ time.</div>
+                        <input type="text" id="listening2" placeholder="Your answer...">
+                        
+                        <div class="question">Pryce: That's exactly why you need me. I can help you get back on your _______.</div>
+                        <input type="text" id="listening3" placeholder="Your answer...">
+                        
+                        <div class="question">Santi: My mom says I _______ under pressure.</div>
+                        <input type="text" id="listening4" placeholder="Your answer...">
+                        
+                        <div class="question">Pryce: Everyone chokes sometimes. It's how you _______ that matters.</div>
+                        <input type="text" id="listening5" placeholder="Your answer...">
+                        
+                        <button class="btn" onclick="checkListening()">Check Answers</button>
+                        <div id="listening-feedback" class="feedback"></div>
+                    </div>
+                    
+                    <!-- Task B: True or False -->
+                    <div class="task">
+                        <div class="task-title">B. True or False</div>
+                        <p>Listen to the conversation and decide if the statements are true or false:</p>
+                        
+                        <!-- Аудиоплеер 2 -->
+                        <div class="audio-container">
+                            <h4>Dialogue 2: The Offer</h4>
+                            <audio controls class="audio-player">
+                                <!-- ЗАМЕНИТЕ ЭТОТ SRC НА ВАШ АУДИОФАЙЛ -->
+                                <source src="audio/dialogue2.mp3" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                            <p><em>Replace "audio/dialogue2.mp3" with your actual audio file path</em></p>
+                        </div>
+                        
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="tf1" id="tf1t" value="true">
+                                <label for="tf1t">1. Pryce is a former professional golfer.</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="tf1" id="tf1f" value="false">
+                                <label for="tf1f">1. Pryce is a former professional golfer.</label>
+                            </div>
+                        </div>
+                        
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="tf2" id="tf2t" value="true">
+                                <label for="tf2t">2. Santi has been playing golf regularly.</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="tf2" id="tf2f" value="false">
+                                <label for="tf2f">2. Santi has been playing golf regularly.</label>
+                            </div>
+                        </div>
+                        
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="tf3" id="tf3t" value="true">
+                                <label for="tf3t">3. Santi's mother supports his decision to return to golf.</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="tf3" id="tf3f" value="false">
+                                <label for="tf3f">3. Santi's mother supports his decision to return to golf.</label>
+                            </div>
+                        </div>
+                        
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="tf4" id="tf4t" value="true">
+                                <label for="tf4t">4. Pryce wants to coach Santi for free.</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="tf4" id="tf4f" value="false">
+                                <label for="tf4f">4. Pryce wants to coach Santi for free.</label>
+                            </div>
+                        </div>
+                        
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="tf5" id="tf5t" value="true">
+                                <label for="tf5t">5. Santi is confident about his abilities.</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="tf5" id="tf5f" value="false">
+                                <label for="tf5f">5. Santi is confident about his abilities.</label>
+                            </div>
+                        </div>
+                        
+                        <button class="btn" onclick="checkTrueFalse()">Check Answers</button>
+                        <div id="truefalse-feedback" class="feedback"></div>
+                    </div>
+                    
+                    <!-- Task C: Multiple Choice -->
+                    <div class="task">
+                        <div class="task-title">C. Multiple Choice</div>
+                        <p>Listen to the dialogue and choose the correct answer:</p>
+                        
+                        <!-- Аудиоплеер 3 -->
+                        <div class="audio-container">
+                            <h4>Dialogue 3: Mother's Concern</h4>
+                            <audio controls class="audio-player">
+                                <!-- ЗАМЕНИТЕ ЭТОТ SRC НА ВАШ АУДИОФАЙЛ -->
+                                <source src="audio/dialogue3.mp3" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                            <p><em>Replace "audio/dialogue3.mp3" with your actual audio file path</em></p>
+                        </div>
+                        
+                        <div class="question">What is Pryce's main motivation for coaching Santi?</div>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="mc1" id="mc1a" value="a">
+                                <label for="mc1a">a) To help Santi achieve his dreams</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="mc1" id="mc1b" value="b">
+                                <label for="mc1b">b) To get a share of Santi's future winnings</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="mc1" id="mc1c" value="c">
+                                <label for="mc1c">c) To rebuild his own reputation</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question">How does Santi feel about returning to golf?</div>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="mc2" id="mc2a" value="a">
+                                <label for="mc2a">a) Excited and confident</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="mc2" id="mc2b" value="b">
+                                <label for="mc2b">b) Hesitant and unsure</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="mc2" id="mc2c" value="c">
+                                <label for="mc2c">c) Completely uninterested</label>
+                            </div>
+                        </div>
+                        
+                        <div class="question">What is Santi's main concern?</div>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="mc3" id="mc3a" value="a">
+                                <label for="mc3a">a) He doesn't have enough time</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="mc3" id="mc3b" value="b">
+                                <label for="mc3b">b) He's afraid of failing under pressure</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="mc3" id="mc3c" value="c">
+                                <label for="mc3c">c) He doesn't like Pryce</label>
+                            </div>
+                        </div>
+                        
+                        <button class="btn" onclick="checkMultipleChoice()">Check Answers</button>
+                        <div id="multiplechoice-feedback" class="feedback"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Вкладка Speaking -->
+            <div id="speaking" class="tab-content">
+                <div class="section">
+                    <h2 class="section-title"><i class="fas fa-comments"></i> Speaking & Usage</h2>
+                    
+                    <!-- Task A: Role-play -->
+                    <div class="task">
+                        <div class="task-title">A. Role-play (in pairs)</div>
+                        <p>Scenario: Pryce tries to convince Santi's mother to let him coach Santi. Use at least 3 idioms from the vocabulary list and 2 grammar constructions (Present Perfect or Past Simple).</p>
+                        <p>Prompt: You are Pryce and Santi's mother; discuss Santi's future and concerns.</p>
+                        <div class="answer-key">
+                            <h4>Example Role-play:</h4>
+                            <p><strong>Pryce:</strong> I understand your concerns, but I have been coaching young players for years. Santi has a special talent that we can't ignore.</p>
+                            <p><strong>Mother:</strong> I need to mull it over. He choked under pressure before and I don't want him to go through that again.</p>
+                            <p><strong>Pryce:</strong> I get back on my feet after my own breakdown, and I can help him do the same. He's not a has-been, he's just beginning.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Task B: Character Descriptions -->
+                    <div class="task">
+                        <div class="task-title">B. Character Descriptions</div>
+                        <p>Describe Pryce, Santi, or Amber-Linn in 5-6 sentences using vocabulary from the episode. Include physical description, personality traits, and their situation.</p>
+                        <textarea id="character-desc" placeholder="Your character description..." data-ai-check="true" data-keywords="physical,personality,traits,appearance"></textarea>
+                        <div id="ai-check-character-desc" class="ai-check"></div>
+                        <button class="btn" onclick="showCharacterExample()">Show Example</button>
+                        <button class="btn btn-warning" onclick="checkAICharacterDesc()">Check with AI</button>
+                        <div id="character-example" class="answer-key">
+                            <h4>Example:</h4>
+                            <p>Pryce is a middle-aged man with a chunky build but strong hands. He used to be a professional golfer but is now considered a has-been after his public breakdown. He has been trying to get back on his feet by coaching young talent. Pryce is persuasive and determined, but sometimes he chokes under pressure when discussing his past failures. He wants to wet his beak with Santi's potential winnings.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Task C: Discussion Questions -->
+                    <div class="task">
+                        <div class="task-title">C. Discussion Questions</div>
+                        <div class="options">
+                            <div class="question">1. Which idioms or expressions from the episode did you find interesting and why?</div>
+                            <textarea id="discussion1" placeholder="Your thoughts..." data-ai-check="true" data-keywords="idioms,expressions,interesting,why"></textarea>
+                            <div id="ai-check-discussion1" class="ai-check"></div>
+                            
+                            <div class="question">2. What do you think about Pryce's decision to coach Santi?</div>
+                            <textarea id="discussion2" placeholder="Your thoughts..." data-ai-check="true" data-keywords="Pryce,decision,coach,Santi,opinion"></textarea>
+                            <div id="ai-check-discussion2" class="ai-check"></div>
+                            
+                            <div class="question">3. Have you ever had a second chance like Santi? How did it feel?</div>
+                            <textarea id="discussion3" placeholder="Your thoughts..." data-ai-check="true" data-keywords="second chance,experience,feelings,personal"></textarea>
+                            <div id="ai-check-discussion3" class="ai-check"></div>
+                        </div>
+                        <button class="btn btn-warning" onclick="checkAIDiscussion()">Check with AI</button>
+                    </div>
+                    
+                    <!-- Task D: Retelling -->
+                    <div class="task">
+                        <div class="task-title">D. Retelling</div>
+                        <p>Tell briefly (2-3 minutes) the story of Pryce meeting Santi and offering to coach him using at least 5 idioms from the vocabulary list.</p>
+                        <textarea id="retelling" placeholder="Your retelling..." data-ai-check="true" data-keywords="Pryce,Santi,meeting,coach,idioms"></textarea>
+                        <div id="ai-check-retelling" class="ai-check"></div>
+                        <button class="btn" onclick="showRetellingExample()">Show Example</button>
+                        <button class="btn btn-warning" onclick="checkAIRetelling()">Check with AI</button>
+                        <div id="retelling-example" class="answer-key">
+                            <h4>Example:</h4>
+                            <p>Pryce, a former golfer now considered a has-been, met Santi at a golf course. Santi was chunky but had a natural talent for golf. Pryce wanted to wet his beak with Santi's potential future winnings, so he offered to coach him. Santi's mother was concerned because he had choked under pressure in the past. She needed to mull it over before making a decision. Pryce convinced her that he could help Santi get back on his feet and succeed.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Task E: Creative Writing -->
+                    <div class="task">
+                        <div class="task-title">E. Creative Writing</div>
+                        <p>Write an alternative ending to episode 1 (around 80 words) imagining what would happen if Santi refused Pryce's offer. Use at least 3 idioms and correct grammar structures.</p>
+                        <textarea id="creative" placeholder="Your alternative ending..." data-ai-check="true" data-keywords="Santi,refused,offer,ending,idioms"></textarea>
+                        <div id="ai-check-creative" class="ai-check"></div>
+                        <button class="btn" onclick="showCreativeExample()">Show Example</button>
+                        <button class="btn btn-warning" onclick="checkAICreative()">Check with AI</button>
+                        <div id="creative-example" class="answer-key">
+                            <h4>Example:</h4>
+                            <p>Santi refused Pryce's offer, explaining that he had choked under pressure before and didn't want to be a has-been like Pryce. His mother supported his decision, saying they needed to mull it over more carefully. Pryce was disappointed but understood. Santi decided to focus on his job and get back on his feet on his own terms. He didn't want to wet his beak with someone else's dreams.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Кнопка отправки только на этой вкладке -->
+                    <div class="submit-section">
+                        <button class="submit-btn" onclick="openSubmitModal('speaking')">
+                            <i class="fas fa-paper-plane"></i> Submit Speaking Tasks
+                        </button>
+                        <p style="margin-top: 15px; color: #6c757d;">Click to submit your speaking tasks for review</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Вкладка Critical Thinking -->
+            <div id="critical" class="tab-content">
+                <div class="section">
+                    <h2 class="section-title"><i class="fas fa-brain"></i> Critical Thinking</h2>
+                    
+                    <!-- Task A: Character Analysis -->
+                    <div class="task">
+                        <div class="task-title">A. Character Analysis</div>
+                        <p>Analyze Pryce's character development in Episode 1. Consider:</p>
+                        <ul>
+                            <li>His motivations and goals</li>
+                            <li>His strengths and weaknesses</li>
+                            <li>How his past experiences influence his present actions</li>
+                            <li>His relationship with other characters</li>
+                        </ul>
+                        <textarea id="character-analysis" placeholder="Your analysis..." data-ai-check="true" data-keywords="motivations,goals,strengths,weaknesses,past,relationship"></textarea>
+                        <div id="ai-check-character-analysis" class="ai-check"></div>
+                        <button class="btn" onclick="showCharacterAnalysisExample()">Show Example</button>
+                        <button class="btn btn-warning" onclick="checkAICharacterAnalysis()">Check with AI</button>
+                        <div id="character-analysis-example" class="answer-key">
+                            <h4>Example Analysis:</h4>
+                            <p>Pryce is a complex character driven by both redemption and self-interest. His motivation to coach Santi stems from a desire to rebuild his reputation while also seeking financial gain ("wet my beak"). His strength lies in his experience and persuasive abilities, but his weakness is his tendency to choke under pressure when confronted with his past failures. His public breakdown has left him as a has-been in the golf world, making him desperate for a comeback. His relationship with Santi is initially transactional but shows potential for genuine mentorship.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Task B: Ethical Dilemma -->
+                    <div class="task">
+                        <div class="task-title">B. Ethical Dilemma</div>
+                        <p>Consider the ethical implications of Pryce's offer to coach Santi:</p>
+                        <div class="options">
+                            <div class="question">1. Is it ethical for Pryce to seek a share of Santi's potential winnings?</div>
+                            <textarea id="ethical1" placeholder="Your thoughts..." data-ai-check="true" data-keywords="ethical,share,winnings,motivation,financial"></textarea>
+                            <div id="ai-check-ethical1" class="ai-check"></div>
+                            
+                            <div class="question">2. Should Pryce be completely honest about his motivations?</div>
+                            <textarea id="ethical2" placeholder="Your thoughts..." data-ai-check="true" data-keywords="honest,motivations,transparency,ethics"></textarea>
+                            <div id="ai-check-ethical2" class="ai-check"></div>
+                            
+                            <div class="question">3. What responsibilities does a coach have toward their student?</div>
+                            <textarea id="ethical3" placeholder="Your thoughts..." data-ai-check="true" data-keywords="responsibilities,coach,student,mentorship,duty"></textarea>
+                            <div id="ai-check-ethical3" class="ai-check"></div>
+                        </div>
+                        <button class="btn btn-warning" onclick="checkAIEthical()">Check with AI</button>
+                    </div>
+                    
+                    <!-- Task C: Prediction -->
+                    <div class="task">
+                        <div class="task-title">C. Predictions</div>
+                        <p>Based on Episode 1, predict what might happen in future episodes:</p>
+                        <div class="options">
+                            <div class="question">1. How will Santi's relationship with his mother evolve?</div>
+                            <textarea id="prediction1" placeholder="Your prediction..." data-ai-check="true" data-keywords="relationship,mother,evolve,develop,change"></textarea>
+                            <div id="ai-check-prediction1" class="ai-check"></div>
+                            
+                            <div class="question">2. Will Pryce and Santi's partnership be successful? Why or why not?</div>
+                            <textarea id="prediction2" placeholder="Your prediction..." data-ai-check="true" data-keywords="partnership,successful,reasons,outcome"></textarea>
+                            <div id="ai-check-prediction2" class="ai-check"></div>
+                            
+                            <div class="question">3. What challenges might they face together?</div>
+                            <textarea id="prediction3" placeholder="Your prediction..." data-ai-check="true" data-keywords="challenges,face,together,obstacles,difficulties"></textarea>
+                            <div id="ai-check-prediction3" class="ai-check"></div>
+                        </div>
+                        <button class="btn btn-warning" onclick="checkAIPrediction()">Check with AI</button>
+                    </div>
+                    
+                    <!-- Task D: Personal Reflection -->
+                    <div class="task">
+                        <div class="task-title">D. Personal Reflection</div>
+                        <p>Connect the themes of the episode to your own life:</p>
+                        <div class="options">
+                            <div class="question">1. Have you ever been given a second chance? How did you handle it?</div>
+                            <textarea id="reflection1" placeholder="Your reflection..." data-ai-check="true" data-keywords="second chance,handle,experience,personal"></textarea>
+                            <div id="ai-check-reflection1" class="ai-check"></div>
+                            
+                            <div class="question">2. What does "getting back on your feet" mean to you personally?</div>
+                            <textarea id="reflection2" placeholder="Your reflection..." data-ai-check="true" data-keywords="getting back,feet,personal meaning,recovery"></textarea>
+                            <div id="ai-check-reflection2" class="ai-check"></div>
+                            
+                            <div class="question">3. How do you handle pressure situations? What strategies work for you?</div>
+                            <textarea id="reflection3" placeholder="Your reflection..." data-ai-check="true" data-keywords="pressure,situations,strategies,handle,coping"></textarea>
+                            <div id="ai-check-reflection3" class="ai-check"></div>
+                        </div>
+                        <button class="btn btn-warning" onclick="checkAIReflection()">Check with AI</button>
+                    </div>
+                    
+                    <!-- Кнопка отправки на этой вкладке -->
+                    <div class="submit-section">
+                        <button class="submit-btn" onclick="openSubmitModal('critical')">
+                            <i class="fas fa-paper-plane"></i> Submit Critical Thinking Tasks
+                        </button>
+                        <p style="margin-top: 15px; color: #6c757d;">Click to submit your critical thinking tasks for review</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Вкладка Cultural Context -->
+            <div id="cultural" class="tab-content">
+                <div class="section">
+                    <h2 class="section-title"><i class="fas fa-globe"></i> Cultural Context</h2>
+                    
+                    <!-- Task A: Golf Culture -->
+                    <div class="task">
+                        <div class="task-title">A. Golf Culture</div>
+                        <p>Explore the cultural significance of golf in the episode and in American culture:</p>
+                        <div class="options">
+                            <div class="question">1. What does golf represent in American society (status, networking, etc.)?</div>
+                            <textarea id="golf1" placeholder="Your thoughts..." data-ai-check="true" data-keywords="golf,American,society,status,networking,culture"></textarea>
+                            <div id="ai-check-golf1" class="ai-check"></div>
+                            
+                            <div class="question">2. How is the golf world portrayed in the episode?</div>
+                            <textarea id="golf2" placeholder="Your thoughts..." data-ai-check="true" data-keywords="golf,world,portrayed,episode,representation"></textarea>
+                            <div id="ai-check-golf2" class="ai-check"></div>
+                            
+                            <div class="question">3. Compare golf culture in America with sports culture in your country.</div>
+                            <textarea id="golf3" placeholder="Your comparison..." data-ai-check="true" data-keywords="golf,America,sports,culture,country,compare"></textarea>
+                            <div id="ai-check-golf3" class="ai-check"></div>
+                        </div>
+                        <button class="btn btn-warning" onclick="checkAIGolf()">Check with AI</button>
+                    </div>
+                    
+                    <!-- Task B: American Dream -->
+                    <div class="task">
+                        <div class="task-title">B. The American Dream</div>
+                        <p>Analyze how the episode explores themes related to the American Dream:</p>
+                        <div class="options">
+                            <div class="question">1. How do Pryce and Santi represent different aspects of the American Dream?</div>
+                            <textarea id="dream1" placeholder="Your analysis..." data-ai-check="true" data-keywords="Pryce,Santi,American Dream,aspects,represent"></textarea>
+                            <div id="ai-check-dream1" class="ai-check"></div>
+                            
+                            <div class="question">2. What does the episode suggest about success and failure in America?</div>
+                            <textarea id="dream2" placeholder="Your thoughts..." data-ai-check="true" data-keywords="episode,success,failure,America,suggest,theme"></textarea>
+                            <div id="ai-check-dream2" class="ai-check"></div>
+                            
+                            <div class="question">3. How does the episode critique or reinforce American values?</div>
+                            <textarea id="dream3" placeholder="Your analysis..." data-ai-check="true" data-keywords="episode,critique,reinforce,American,values,theme"></textarea>
+                            <div id="ai-check-dream3" class="ai-check"></div>
+                        </div>
+                        <button class="btn btn-warning" onclick="checkAIDream()">Check with AI</button>
+                    </div>
+                    
+                    <!-- Task C: Idioms in Culture -->
+                    <div class="task">
+                        <div class="task-title">C. Idioms in Cultural Context</div>
+                        <p>Examine how the idioms from the episode reflect American cultural values:</p>
+                        <div class="options">
+                            <div class="question">1. How does "wet my beak" reflect American business culture?</div>
+                            <textarea id="idiom1" placeholder="Your analysis..." data-ai-check="true" data-keywords="wet my beak,American,business,culture,reflect,values"></textarea>
+                            <div id="ai-check-idiom1" class="ai-check"></div>
+                            
+                            <div class="question">2. What does "get back on your feet" reveal about American attitudes toward resilience?</div>
+                            <textarea id="idiom2" placeholder="Your thoughts..." data-ai-check="true" data-keywords="get back on your feet,American,attitudes,resilience,reveal,values"></textarea>
+                            <div id="ai-check-idiom2" class="ai-check"></div>
+                            
+                            <div class="question">3. How does "has-been" reflect American culture's focus on youth and success?</div>
+                            <textarea id="idiom3" placeholder="Your analysis..." data-ai-check="true" data-keywords="has-been,American,culture,youth,success,focus,reflect"></textarea>
+                            <div id="ai-check-idiom3" class="ai-check"></div>
+                        </div>
+                        <button class="btn btn-warning" onclick="checkAIIdiom()">Check with AI</button>
+                    </div>
+                    
+                    <!-- Task D: Media Representation -->
+                    <div class="task">
+                        <div class="task-title">D. Media Representation</div>
+                        <p>Analyze how the episode represents different groups in society:</p>
+                        <div class="options">
+                            <div class="question">1. How are athletes portrayed in the episode?</div>
+                            <textarea id="media1" placeholder="Your analysis..." data-ai-check="true" data-keywords="athletes,portrayed,episode,representation,media"></textarea>
+                            <div id="ai-check-media1" class="ai-check"></div>
+                            
+                            <div class="question">2. What does the episode suggest about mentorship relationships?</div>
+                            <textarea id="media2" placeholder="Your thoughts..." data-ai-check="true" data-keywords="episode,suggest,mentorship,relationships,dynamic"></textarea>
+                            <div id="ai-check-media2" class="ai-check"></div>
+                            
+                            <div class="question">3. How does the episode represent family dynamics in American culture?</div>
+                            <textarea id="media3" placeholder="Your analysis..." data-ai-check="true" data-keywords="episode,represent,family,dynamics,American,culture"></textarea>
+                            <div id="ai-check-media3" class="ai-check"></div>
+                        </div>
+                        <button class="btn btn-warning" onclick="checkAIMedia()">Check with AI</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Вкладка Interactive -->
+            <div id="interactive" class="tab-content">
+                <div class="section">
+                    <h2 class="section-title"><i class="fas fa-gamepad"></i> Interactive Activities</h2>
+                    
+                    <!-- Character Cards -->
+                    <div class="task">
+                        <div class="task-title">Character Cards</div>
+                        <p>Explore the main characters from Episode 1:</p>
+                        <div class="character-cards">
+                            <div class="character-card">
+                                <div class="character-image">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="character-info">
+                                    <div class="character-name">Pryce</div>
+                                    <div class="character-description">Former professional golfer turned coach, seeking redemption and financial opportunity.</div>
+                                    <div class="character-traits">
+                                        <span class="trait">Determined</span>
+                                        <span class="trait">Persuasive</span>
+                                        <span class="trait">Flawed</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="character-card">
+                                <div class="character-image">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="character-info">
+                                    <div class="character-name">Santi</div>
+                                    <div class="character-description">Talented but hesitant young golfer with natural ability but lack of confidence.</div>
+                                    <div class="character-traits">
+                                        <span class="trait">Talented</span>
+                                        <span class="trait">Uncertain</span>
+                                        <span class="trait">Potential</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="character-card">
+                                <div class="character-image">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="character-info">
+                                    <div class="character-name">Amber-Linn</div>
+                                    <div class="character-description">Santi's mother, protective and concerned about her son's future.</div>
+                                    <div class="character-traits">
+                                        <span class="trait">Caring</span>
+                                        <span class="trait">Protective</span>
+                                        <span class="trait">Practical</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Timeline -->
+                    <div class="task">
+                        <div class="task-title">Episode Timeline</div>
+                        <p>Drag and drop the events to arrange them in chronological order:</p>
+                        <div class="timeline-container">
+                            <div class="timeline" id="timeline">
+                                <div class="timeline-item" draggable="true" data-order="1">
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-content">
+                                        <div class="timeline-title">Pryce's Breakdown</div>
+                                        <div class="timeline-description">Flashback to Pryce's public meltdown during a tournament</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="timeline-item" draggable="true" data-order="2">
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-content">
+                                        <div class="timeline-title">Meeting Santi</div>
+                                        <div class="timeline-description">Pryce discovers Santi playing golf at a local course</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="timeline-item" draggable="true" data-order="3">
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-content">
+                                        <div class="timeline-title">The Offer</div>
+                                        <div class="timeline-description">Pryce proposes to coach Santi with a share of winnings</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="timeline-item" draggable="true" data-order="4">
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-content">
+                                        <div class="timeline-title">Mother's Concern</div>
+                                        <div class="timeline-description">Santi's mother expresses worries about the arrangement</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="timeline-item" draggable="true" data-order="5">
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-content">
+                                        <div class="timeline-title">Decision Time</div>
+                                        <div class="timeline-description">Santi must decide whether to accept Pryce's offer</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn" onclick="checkTimelineOrder()">Check Order</button>
+                            <div id="timeline-feedback" class="timeline-feedback"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Drag and Drop -->
+                    <div class="task">
+                        <div class="task-title">Match Characters to Their Goals</div>
+                        <p>Drag each character to their primary goal in Episode 1:</p>
+                        <div class="drag-drop-container">
+                            <div class="drag-items">
+                                <div class="drag-item" draggable="true" data-character="pryce">Pryce</div>
+                                <div class="drag-item" draggable="true" data-character="santi">Santi</div>
+                                <div class="drag-item" draggable="true" data-character="amber-linn">Amber-Linn</div>
+                            </div>
+                            
+                            <div class="drop-zones">
+                                <div class="drop-zone" data-goal="redemption">
+                                    <h4>Redemption</h4>
+                                    <p>Seeking to rebuild reputation and find purpose</p>
+                                </div>
+                                
+                                <div class="drop-zone" data-goal="opportunity">
+                                    <h4>Opportunity</h4>
+                                    <p>Looking for a second chance at success</p>
+                                </div>
+                                
+                                <div class="drop-zone" data-goal="protection">
+                                    <h4>Protection</h4>
+                                    <p>Wanting to safeguard loved ones</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn" onclick="checkDragDrop()">Check Answers</button>
+                        <div id="dragdrop-feedback" class="feedback"></div>
+                    </div>
+                    
+                    <!-- Quiz -->
+                    <div class="task">
+                        <div class="task-title">Episode Quiz</div>
+                        <p>Test your knowledge of Episode 1:</p>
+                        <div class="quiz-container">
+                            <div class="quiz-question">What sport is featured in the series "Stick"?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" onclick="selectQuizOption(this, 'a')">Tennis</div>
+                                <div class="quiz-option" onclick="selectQuizOption(this, 'b')">Golf</div>
+                                <div class="quiz-option" onclick="selectQuizOption(this, 'c')">Basketball</div>
+                                <div class="quiz-option" onclick="selectQuizOption(this, 'd')">Baseball</div>
+                            </div>
+                            <div class="quiz-result" id="quiz-result-1"></div>
+                            
+                            <div class="quiz-question">What does Pryce want from Santi?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" onclick="selectQuizOption(this, 'a')">Friendship</div>
+                                <div class="quiz-option" onclick="selectQuizOption(this, 'b')">A share of winnings</div>
+                                <div class="quiz-option" onclick="selectQuizOption(this, 'c')">A new car</div>
+                                <div class="quiz-option" onclick="selectQuizOption(this, 'd')">Nothing</div>
+                            </div>
+                            <div class="quiz-result" id="quiz-result-2"></div>
+                            
+                            <div class="quiz-question">Why did Santi stop playing golf?</div>
+                            <div class="quiz-options">
+                                <div class="quiz-option" onclick="selectQuizOption(this, 'a')">Injury</div>
+                                <div class="quiz-option" onclick="selectQuizOption(this, 'b')">Lack of interest</div>
+                                <div class="quiz-option" onclick="selectQuizOption(this, 'c')">Pressure and fear of failure</div>
+                                <div class="quiz-option" onclick="selectQuizOption(this, 'd')">Financial problems</div>
+                            </div>
+                            <div class="quiz-result" id="quiz-result-3"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Memory Game -->
+                    <div class="task">
+                        <div class="task-title">Memory Game: Match Idioms with Definitions</div>
+                        <p>Match the English idioms with their English definitions. Click on the cards to flip them.</p>
+                        
+                        <div class="memory-game-container">
+                            <h1 class="memory-title">Memory: English Idioms from Stick</h1>
+                            <div id="memory-status">Открыто пар: 0 из 12</div>
+                            <div style="margin-top: 15px;">
+                                <button id="memory-restartBtn" onclick="memoryResetGame()">Начать заново</button>
+                                <button id="memory-showAnswersBtn" onclick="memoryShowAnswers()">Показать ответы</button>
+                            </div>
+                            <div id="memory-game"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Flashcards -->
+                    <div class="task">
+                        <div class="task-title">Interactive Flashcards</div>
+                        <p>Click on each card to flip it and see the definition. Practice these idioms from the episode!</p>
+                        
+                        <div class="flashcards-container" id="flashcards-container">
+                            <!-- Карточки будут добавлены через JavaScript -->
+                        </div>
+                        
+                        <div class="flashcard-controls">
+                            <button class="btn" onclick="flipAllCards()">Flip All Cards</button>
+                            <button class="btn btn-success" onclick="resetAllCards()">Reset All Cards</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Индикатор прогресса и итоговая кнопка отправки -->
+                    <div class="progress-container">
+                        <h3>Your Progress</h3>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progress-fill"></div>
+                        </div>
+                        <div class="progress-text" id="progress-text">0% Complete</div>
+                    </div>
+                    
+                    <div class="submit-section">
+                        <button class="submit-btn" id="final-submit-btn" onclick="checkAllTasksAndSubmit()" disabled>
+                            <i class="fas fa-paper-plane"></i> Submit All Tasks
+                        </button>
+                        <p style="margin-top: 15px; color: #6c757d;">Complete all required tasks to enable submission</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2025 Stick Episode 1 Workbook | by Synapse Learning 2025</p>
+        </footer>
+    </div>
+    
+    <!-- Модальное окно для отправки -->
+    <div id="submitModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeSubmitModal()">&times;</span>
+            <h2 class="modal-title">Submit Your Tasks</h2>
+            <div class="modal-body">
+                <p>You are about to submit the following tasks:</p>
+                <ul id="submitList">
+                    <!-- Список задач будет заполнен динамически -->
+                </ul>
+                <p>These will be sent to your instructor for review.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success" onclick="submitTasks()">Submit</button>
+                <button class="btn" onclick="closeSubmitModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Уведомление -->
+    <div id="notification" class="notification"></div>
+    
+    <script>
+        // Данные для карточек
+        const flashcardsData = [
+            {
+                term: "wet my beak",
+                definition: "to get an advance payment or a share of profits"
+            },
+            {
+                term: "chunky",
+                definition: "slightly overweight or bulky"
+            },
+            {
+                term: "never-was / has-been",
+                definition: "someone who was once successful but no longer is"
+            },
+            {
+                term: "to choke",
+                definition: "to fail due to pressure or nervousness"
+            },
+            {
+                term: "mull it over",
+                definition: "to think carefully before making a decision"
+            },
+            {
+                term: "get back on your feet",
+                definition: "to recover after difficulties"
+            },
+            {
+                term: "handle it",
+                definition: "to manage or deal with something"
+            },
+            {
+                term: "put a little extra cash in your pocket",
+                definition: "to earn some extra money"
+            },
+            {
+                term: "to hose one",
+                definition: "to completely miss or fail at something"
+            },
+            {
+                term: "ring someone up",
+                definition: "to process a payment for someone at a store"
+            },
+            {
+                term: "spoil someone",
+                definition: "to treat someone kindly or give many gifts"
+            },
+            {
+                term: "take a mental health time-out",
+                definition: "to take a break for mental well-being"
+            }
+        ];
+        
+        // Данные для игры Мемори
+        const memoryPairsData = [
+            {
+                question: "wet my beak",
+                answer: "to get an advance payment or a share of profits"
+            },
+            {
+                question: "chunky",
+                answer: "slightly overweight or bulky"
+            },
+            {
+                question: "never-was / has-been",
+                answer: "someone who was once successful but no longer is"
+            },
+            {
+                question: "to choke",
+                answer: "to fail due to pressure or nervousness"
+            },
+            {
+                question: "mull it over",
+                answer: "to think carefully before making a decision"
+            },
+            {
+                question: "get back on your feet",
+                answer: "to recover after difficulties"
+            },
+            {
+                question: "handle it",
+                answer: "to manage or deal with something"
+            },
+            {
+                question: "put a little extra cash in your pocket",
+                answer: "to earn some extra money"
+            },
+            {
+                question: "to hose one",
+                answer: "to completely miss or fail at something"
+            },
+            {
+                question: "ring someone up",
+                answer: "to process a payment for someone at a store"
+            },
+            {
+                question: "spoil someone",
+                answer: "to treat someone kindly or give many gifts"
+            },
+            {
+                question: "take a mental health time-out",
+                answer: "to take a break for mental well-being"
+            }
+        ];
+        
+        // Обязательные поля для проверки
+        const requiredFields = [
+            { id: 'character-desc', tab: 'speaking', name: 'Character Description' },
+            { id: 'discussion1', tab: 'speaking', name: 'Discussion Question 1' },
+            { id: 'discussion2', tab: 'speaking', name: 'Discussion Question 2' },
+            { id: 'discussion3', tab: 'speaking', name: 'Discussion Question 3' },
+            { id: 'retelling', tab: 'speaking', name: 'Retelling' },
+            { id: 'creative', tab: 'speaking', name: 'Creative Writing' },
+            { id: 'character-analysis', tab: 'critical', name: 'Character Analysis' },
+            { id: 'ethical1', tab: 'critical', name: 'Ethical Dilemma 1' },
+            { id: 'ethical2', tab: 'critical', name: 'Ethical Dilemma 2' },
+            { id: 'ethical3', tab: 'critical', name: 'Ethical Dilemma 3' },
+            { id: 'prediction1', tab: 'critical', name: 'Prediction 1' },
+            { id: 'prediction2', tab: 'critical', name: 'Prediction 2' },
+            { id: 'prediction3', tab: 'critical', name: 'Prediction 3' },
+            { id: 'reflection1', tab: 'critical', name: 'Personal Reflection 1' },
+            { id: 'reflection2', tab: 'critical', name: 'Personal Reflection 2' },
+            { id: 'reflection3', tab: 'critical', name: 'Personal Reflection 3' }
+        ];
+        
+        // Функции для вкладок
+        function openTab(evt, tabName) {
+            var i, tabcontent, tabs;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+            tabs = document.getElementsByClassName("tab");
+            for (i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove("active");
+            }
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+            
+            // Обновляем прогресс при переключении вкладок
+            updateProgress();
+        }
+        
+        // Функции для воркбука
+        function checkAnswer(questionId, correctAnswer) {
+            const selectedOption = document.querySelector(`input[name="${questionId}"]:checked`);
+            const feedback = document.getElementById(`feedback-${questionId}`);
+            
+            if (!selectedOption) {
+                feedback.textContent = "Please select an answer.";
+                feedback.className = "feedback incorrect";
+                feedback.style.display = "block";
+                return;
+            }
+            
+            if (selectedOption.value === correctAnswer) {
+                feedback.textContent = "Correct! Well done.";
+                feedback.className = "feedback correct";
+            } else {
+                feedback.textContent = "Incorrect. The correct answer is " + correctAnswer + ".";
+                feedback.className = "feedback incorrect";
+            }
+            
+            feedback.style.display = "block";
+        }
+        
+        function checkMatching() {
+            const correctAnswers = {
+                match1: "a",
+                match2: "b",
+                match3: "c",
+                match4: "d",
+                match5: "e",
+                match6: "f"
+            };
+            
+            let allCorrect = true;
+            const feedback = document.getElementById("matching-feedback");
+            let feedbackText = "";
+            
+            for (let i = 1; i <= 6; i++) {
+                const selectedValue = document.getElementById(`match${i}`).value;
+                const selectElement = document.getElementById(`match${i}`);
+                
+                if (selectedValue === correctAnswers[`match${i}`]) {
+                    selectElement.classList.add("correct-answer");
+                    selectElement.classList.remove("incorrect-answer");
+                } else {
+                    selectElement.classList.add("incorrect-answer");
+                    selectElement.classList.remove("correct-answer");
+                    allCorrect = false;
+                    feedbackText += `Question ${i} is incorrect. `;
+                }
+            }
+            
+            if (allCorrect) {
+                feedback.textContent = "All answers are correct! Well done.";
+                feedback.className = "feedback correct";
+            } else {
+                feedback.textContent = feedbackText;
+                feedback.className = "feedback incorrect";
+            }
+            
+            feedback.style.display = "block";
+        }
+        
+        function checkBlanks() {
+            const correctAnswers = {
+                blank1: "has-been",
+                blank2: "choke",
+                blank3: "mull it over",
+                blank4: "chunky",
+                blank5: "has-been"
+            };
+            
+            let allCorrect = true;
+            const feedback = document.getElementById("blanks-feedback");
+            let feedbackText = "";
+            
+            for (let i = 1; i <= 5; i++) {
+                const userAnswer = document.getElementById(`blank${i}`).value.trim().toLowerCase();
+                const inputElement = document.getElementById(`blank${i}`);
+                const correctAnswer = correctAnswers[`blank${i}`].toLowerCase();
+                
+                if (userAnswer === correctAnswer) {
+                    inputElement.classList.add("correct-answer");
+                    inputElement.classList.remove("incorrect-answer");
+                } else {
+                    inputElement.classList.add("incorrect-answer");
+                    inputElement.classList.remove("correct-answer");
+                    allCorrect = false;
+                    feedbackText += `Question ${i} is incorrect. `;
+                }
+            }
+            
+            if (allCorrect) {
+                feedback.textContent = "All answers are correct! Well done.";
+                feedback.className = "feedback correct";
+            } else {
+                feedback.textContent = feedbackText;
+                feedback.className = "feedback incorrect";
+            }
+            
+            feedback.style.display = "block";
+        }
+        
+        function showExampleSentences() {
+            const exampleDiv = document.getElementById("sentences-example");
+            exampleDiv.style.display = exampleDiv.style.display === "block" ? "none" : "block";
+        }
+        
+        function checkGrammar() {
+            const correctAnswers = {
+                grammar1: "stopped",
+                grammar2: "haven't decided",
+                grammar3: "has been",
+                grammar4: "has tried",
+                grammar5: "has won"
+            };
+            
+            let allCorrect = true;
+            const feedback = document.getElementById("grammar-feedback");
+            let feedbackText = "";
+            
+            for (let i = 1; i <= 5; i++) {
+                const userAnswer = document.getElementById(`grammar${i}`).value.trim().toLowerCase();
+                const inputElement = document.getElementById(`grammar${i}`);
+                const correctAnswer = correctAnswers[`grammar${i}`].toLowerCase();
+                
+                const alternativeAnswers = {
+                    grammar2: ["haven't decided", "have not decided"],
+                    grammar4: ["has tried", "had tried"]
+                };
+                
+                let isCorrect = false;
+                if (alternativeAnswers[`grammar${i}`]) {
+                    isCorrect = alternativeAnswers[`grammar${i}`].includes(userAnswer);
+                } else {
+                    isCorrect = userAnswer === correctAnswer;
+                }
+                
+                if (isCorrect) {
+                    inputElement.classList.add("correct-answer");
+                    inputElement.classList.remove("incorrect-answer");
+                } else {
+                    inputElement.classList.add("incorrect-answer");
+                    inputElement.classList.remove("correct-answer");
+                    allCorrect = false;
+                    feedbackText += `Question ${i} is incorrect. `;
+                }
+            }
+            
+            if (allCorrect) {
+                feedback.textContent = "All answers are correct! Well done.";
+                feedback.className = "feedback correct";
+            } else {
+                feedback.textContent = feedbackText;
+                feedback.className = "feedback incorrect";
+            }
+            
+            feedback.style.display = "block";
+        }
+        
+        function checkCorrections() {
+            const correctAnswers = {
+                correction1: "Pryce has lived in the house for two years.",
+                correction2: "Santi didn't play golf for a long time.",
+                correction3: "Has Amber-Linn sold the house already?",
+                correction4: "They were hoping to get an advance today.",
+                correction5: "We agreed about the deal last week."
+            };
+            
+            let allCorrect = true;
+            const feedback = document.getElementById("corrections-feedback");
+            let feedbackText = "";
+            
+            for (let i = 1; i <= 5; i++) {
+                const userAnswer = document.getElementById(`correction${i}`).value.trim();
+                const inputElement = document.getElementById(`correction${i}`);
+                const correctAnswer = correctAnswers[`correction${i}`];
+                
+                const normalizedUser = userAnswer.toLowerCase().replace(/\s+/g, ' ').trim();
+                const normalizedCorrect = correctAnswer.toLowerCase().replace(/\s+/g, ' ').trim();
+                
+                if (normalizedUser === normalizedCorrect) {
+                    inputElement.classList.add("correct-answer");
+                    inputElement.classList.remove("incorrect-answer");
+                } else {
+                    inputElement.classList.add("incorrect-answer");
+                    inputElement.classList.remove("correct-answer");
+                    allCorrect = false;
+                    feedbackText += `Question ${i} is incorrect. `;
+                }
+            }
+            
+            if (allCorrect) {
+                feedback.textContent = "All answers are correct! Well done.";
+                feedback.className = "feedback correct";
+            } else {
+                feedback.textContent = feedbackText;
+                feedback.className = "feedback incorrect";
+            }
+            
+            feedback.style.display = "block";
+        }
+        
+        function showSpeechAnswers() {
+            const answerDiv = document.getElementById("speech-answers");
+            answerDiv.style.display = answerDiv.style.display === "block" ? "none" : "block";
+        }
+        
+        function showCharacterExample() {
+            const exampleDiv = document.getElementById("character-example");
+            exampleDiv.style.display = exampleDiv.style.display === "block" ? "none" : "block";
+        }
+        
+        function showRetellingExample() {
+            const exampleDiv = document.getElementById("retelling-example");
+            exampleDiv.style.display = exampleDiv.style.display === "block" ? "none" : "block";
+        }
+        
+        function showCreativeExample() {
+            const exampleDiv = document.getElementById("creative-example");
+            exampleDiv.style.display = exampleDiv.style.display === "block" ? "none" : "block";
+        }
+        
+        function showCharacterAnalysisExample() {
+            const exampleDiv = document.getElementById("character-analysis-example");
+            exampleDiv.style.display = exampleDiv.style.display === "block" ? "none" : "block";
+        }
+        
+        function checkListening() {
+            const correctAnswers = {
+                listening1: "potential",
+                listening2: "long",
+                listening3: "feet",
+                listening4: "choked",
+                listening5: "recover"
+            };
+            
+            let allCorrect = true;
+            const feedback = document.getElementById("listening-feedback");
+            let feedbackText = "";
+            
+            for (let i = 1; i <= 5; i++) {
+                const userAnswer = document.getElementById(`listening${i}`).value.trim().toLowerCase();
+                const inputElement = document.getElementById(`listening${i}`);
+                const correctAnswer = correctAnswers[`listening${i}`].toLowerCase();
+                
+                if (userAnswer === correctAnswer) {
+                    inputElement.classList.add("correct-answer");
+                    inputElement.classList.remove("incorrect-answer");
+                } else {
+                    inputElement.classList.add("incorrect-answer");
+                    inputElement.classList.remove("correct-answer");
+                    allCorrect = false;
+                    feedbackText += `Question ${i} is incorrect. `;
+                }
+            }
+            
+            if (allCorrect) {
+                feedback.textContent = "All answers are correct! Well done.";
+                feedback.className = "feedback correct";
+            } else {
+                feedback.textContent = feedbackText;
+                feedback.className = "feedback incorrect";
+            }
+            
+            feedback.style.display = "block";
+        }
+        
+        function checkTrueFalse() {
+            const correctAnswers = {
+                tf1: "true",
+                tf2: "false",
+                tf3: "false",
+                tf4: "false",
+                tf5: "false"
+            };
+            
+            let allCorrect = true;
+            const feedback = document.getElementById("truefalse-feedback");
+            let feedbackText = "";
+            
+            for (let i = 1; i <= 5; i++) {
+                const selectedOption = document.querySelector(`input[name="tf${i}"]:checked`);
+                
+                if (!selectedOption) {
+                    feedbackText += `Question ${i} is not answered. `;
+                    allCorrect = false;
+                    continue;
+                }
+                
+                if (selectedOption.value === correctAnswers[`tf${i}`]) {
+                    feedbackText += `Question ${i} is correct. `;
+                } else {
+                    feedbackText += `Question ${i} is incorrect. `;
+                    allCorrect = false;
+                }
+            }
+            
+            if (allCorrect) {
+                feedback.textContent = "All answers are correct! Well done.";
+                feedback.className = "feedback correct";
+            } else {
+                feedback.textContent = feedbackText;
+                feedback.className = "feedback incorrect";
+            }
+            
+            feedback.style.display = "block";
+        }
+        
+        function checkMultipleChoice() {
+            const correctAnswers = {
+                mc1: "b",
+                mc2: "b",
+                mc3: "b"
+            };
+            
+            let allCorrect = true;
+            const feedback = document.getElementById("multiplechoice-feedback");
+            let feedbackText = "";
+            
+            for (let i = 1; i <= 3; i++) {
+                const selectedOption = document.querySelector(`input[name="mc${i}"]:checked`);
+                
+                if (!selectedOption) {
+                    feedbackText += `Question ${i} is not answered. `;
+                    allCorrect = false;
+                    continue;
+                }
+                
+                if (selectedOption.value === correctAnswers[`mc${i}`]) {
+                    feedbackText += `Question ${i} is correct. `;
+                } else {
+                    feedbackText += `Question ${i} is incorrect. `;
+                    allCorrect = false;
+                }
+            }
+            
+            if (allCorrect) {
+                feedback.textContent = "All answers are correct! Well done.";
+                feedback.className = "feedback correct";
+            } else {
+                feedback.textContent = feedbackText;
+                feedback.className = "feedback incorrect";
+            }
+            
+            feedback.style.display = "block";
+        }
+        
+        // Функции для модального окна отправки
+        let currentSubmitTab = '';
+        
+        function openSubmitModal(tab) {
+            currentSubmitTab = tab;
+            document.getElementById('submitModal').style.display = 'block';
+            
+            // Заполняем список задач для отправки
+            const submitList = document.getElementById('submitList');
+            submitList.innerHTML = '';
+            
+            if (tab === 'speaking') {
+                submitList.innerHTML = `
+                    <li>Character Description</li>
+                    <li>Discussion Questions</li>
+                    <li>Retelling</li>
+                    <li>Creative Writing</li>
+                `;
+            } else if (tab === 'critical') {
+                submitList.innerHTML = `
+                    <li>Character Analysis</li>
+                    <li>Ethical Dilemma</li>
+                    <li>Predictions</li>
+                    <li>Personal Reflection</li>
+                `;
+            } else if (tab === 'all') {
+                submitList.innerHTML = `
+                    <li>Character Description</li>
+                    <li>Discussion Questions</li>
+                    <li>Retelling</li>
+                    <li>Creative Writing</li>
+                    <li>Character Analysis</li>
+                    <li>Ethical Dilemma</li>
+                    <li>Predictions</li>
+                    <li>Personal Reflection</li>
+                    <li>Cultural Context Tasks</li>
+                `;
+            }
+        }
+        
+        function closeSubmitModal() {
+            document.getElementById('submitModal').style.display = 'none';
+        }
+        
+        // Функция для показа уведомлений
+        function showNotification(message, isError = false) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.className = isError ? 'notification error show' : 'notification show';
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+        
+        // Функция для отправки задач
+        function submitTasks() {
+            // Собираем данные с задач в зависимости от вкладки
+            let emailContent = "Stick Episode 1 Workbook - Tasks Submission\n\n";
+            
+            if (currentSubmitTab === 'speaking' || currentSubmitTab === 'all') {
+                // Speaking tasks
+                const characterDesc = document.getElementById('character-desc').value;
+                const discussion1 = document.getElementById('discussion1').value;
+                const discussion2 = document.getElementById('discussion2').value;
+                const discussion3 = document.getElementById('discussion3').value;
+                const retelling = document.getElementById('retelling').value;
+                const creative = document.getElementById('creative').value;
+                
+                if (characterDesc) {
+                    emailContent += "=== Character Description ===\n";
+                    emailContent += characterDesc + "\n\n";
+                }
+                
+                if (discussion1 || discussion2 || discussion3) {
+                    emailContent += "=== Discussion Questions ===\n";
+                    if (discussion1) {
+                        emailContent += "1. Which idioms or expressions from the episode did you find interesting and why?\n";
+                        emailContent += discussion1 + "\n\n";
+                    }
+                    if (discussion2) {
+                        emailContent += "2. What do you think about Pryce's decision to coach Santi?\n";
+                        emailContent += discussion2 + "\n\n";
+                    }
+                    if (discussion3) {
+                        emailContent += "3. Have you ever had a second chance like Santi? How did it feel?\n";
+                        emailContent += discussion3 + "\n\n";
+                    }
+                }
+                
+                if (retelling) {
+                    emailContent += "=== Retelling ===\n";
+                    emailContent += retelling + "\n\n";
+                }
+                
+                if (creative) {
+                    emailContent += "=== Creative Writing ===\n";
+                    emailContent += creative + "\n\n";
+                }
+            }
+            
+            if (currentSubmitTab === 'critical' || currentSubmitTab === 'all') {
+                // Critical Thinking tasks
+                const characterAnalysis = document.getElementById('character-analysis').value;
+                const ethical1 = document.getElementById('ethical1').value;
+                const ethical2 = document.getElementById('ethical2').value;
+                const ethical3 = document.getElementById('ethical3').value;
+                const prediction1 = document.getElementById('prediction1').value;
+                const prediction2 = document.getElementById('prediction2').value;
+                const prediction3 = document.getElementById('prediction3').value;
+                const reflection1 = document.getElementById('reflection1').value;
+                const reflection2 = document.getElementById('reflection2').value;
+                const reflection3 = document.getElementById('reflection3').value;
+                
+                if (characterAnalysis) {
+                    emailContent += "=== Character Analysis ===\n";
+                    emailContent += characterAnalysis + "\n\n";
+                }
+                
+                if (ethical1 || ethical2 || ethical3) {
+                    emailContent += "=== Ethical Dilemma ===\n";
+                    if (ethical1) {
+                        emailContent += "1. Is it ethical for Pryce to seek a share of Santi's potential winnings?\n";
+                        emailContent += ethical1 + "\n\n";
+                    }
+                    if (ethical2) {
+                        emailContent += "2. Should Pryce be completely honest about his motivations?\n";
+                        emailContent += ethical2 + "\n\n";
+                    }
+                    if (ethical3) {
+                        emailContent += "3. What responsibilities does a coach have toward their student?\n";
+                        emailContent += ethical3 + "\n\n";
+                    }
+                }
+                
+                if (prediction1 || prediction2 || prediction3) {
+                    emailContent += "=== Predictions ===\n";
+                    if (prediction1) {
+                        emailContent += "1. How will Santi's relationship with his mother evolve?\n";
+                        emailContent += prediction1 + "\n\n";
+                    }
+                    if (prediction2) {
+                        emailContent += "2. Will Pryce and Santi's partnership be successful? Why or why not?\n";
+                        emailContent += prediction2 + "\n\n";
+                    }
+                    if (prediction3) {
+                        emailContent += "3. What challenges might they face together?\n";
+                        emailContent += prediction3 + "\n\n";
+                    }
+                }
+                
+                if (reflection1 || reflection2 || reflection3) {
+                    emailContent += "=== Personal Reflection ===\n";
+                    if (reflection1) {
+                        emailContent += "1. Have you ever been given a second chance? How did you handle it?\n";
+                        emailContent += reflection1 + "\n\n";
+                    }
+                    if (reflection2) {
+                        emailContent += "2. What does \"getting back on your feet\" mean to you personally?\n";
+                        emailContent += reflection2 + "\n\n";
+                    }
+                    if (reflection3) {
+                        emailContent += "3. How do you handle pressure situations? What strategies work for you?\n";
+                        emailContent += reflection3 + "\n\n";
+                    }
+                }
+            }
+            
+            if (currentSubmitTab === 'all') {
+                // Cultural Context tasks
+                const golf1 = document.getElementById('golf1').value;
+                const golf2 = document.getElementById('golf2').value;
+                const golf3 = document.getElementById('golf3').value;
+                const dream1 = document.getElementById('dream1').value;
+                const dream2 = document.getElementById('dream2').value;
+                const dream3 = document.getElementById('dream3').value;
+                const idiom1 = document.getElementById('idiom1').value;
+                const idiom2 = document.getElementById('idiom2').value;
+                const idiom3 = document.getElementById('idiom3').value;
+                const media1 = document.getElementById('media1').value;
+                const media2 = document.getElementById('media2').value;
+                const media3 = document.getElementById('media3').value;
+                
+                if (golf1 || golf2 || golf3) {
+                    emailContent += "=== Golf Culture ===\n";
+                    if (golf1) {
+                        emailContent += "1. What does golf represent in American society (status, networking, etc.)?\n";
+                        emailContent += golf1 + "\n\n";
+                    }
+                    if (golf2) {
+                        emailContent += "2. How is the golf world portrayed in the episode?\n";
+                        emailContent += golf2 + "\n\n";
+                    }
+                    if (golf3) {
+                        emailContent += "3. Compare golf culture in America with sports culture in your country.\n";
+                        emailContent += golf3 + "\n\n";
+                    }
+                }
+                
+                if (dream1 || dream2 || dream3) {
+                    emailContent += "=== The American Dream ===\n";
+                    if (dream1) {
+                        emailContent += "1. How do Pryce and Santi represent different aspects of the American Dream?\n";
+                        emailContent += dream1 + "\n\n";
+                    }
+                    if (dream2) {
+                        emailContent += "2. What does the episode suggest about success and failure in America?\n";
+                        emailContent += dream2 + "\n\n";
+                    }
+                    if (dream3) {
+                        emailContent += "3. How does the episode critique or reinforce American values?\n";
+                        emailContent += dream3 + "\n\n";
+                    }
+                }
+                
+                if (idiom1 || idiom2 || idiom3) {
+                    emailContent += "=== Idioms in Cultural Context ===\n";
+                    if (idiom1) {
+                        emailContent += "1. How does \"wet my beak\" reflect American business culture?\n";
+                        emailContent += idiom1 + "\n\n";
+                    }
+                    if (idiom2) {
+                        emailContent += "2. What does \"get back on your feet\" reveal about American attitudes toward resilience?\n";
+                        emailContent += idiom2 + "\n\n";
+                    }
+                    if (idiom3) {
+                        emailContent += "3. How does \"has-been\" reflect American culture's focus on youth and success?\n";
+                        emailContent += idiom3 + "\n\n";
+                    }
+                }
+                
+                if (media1 || media2 || media3) {
+                    emailContent += "=== Media Representation ===\n";
+                    if (media1) {
+                        emailContent += "1. How are athletes portrayed in the episode?\n";
+                        emailContent += media1 + "\n\n";
+                    }
+                    if (media2) {
+                        emailContent += "2. What does the episode suggest about mentorship relationships?\n";
+                        emailContent += media2 + "\n\n";
+                    }
+                    if (media3) {
+                        emailContent += "3. How does the episode represent family dynamics in American culture?\n";
+                        emailContent += media3 + "\n\n";
+                    }
+                }
+            }
+            
+            emailContent += "Submitted on: " + new Date().toLocaleString();
+            
+            // Создаем ссылку mailto
+            const subject = encodeURIComponent("Stick Episode 1 Workbook - Tasks Submission");
+            const body = encodeURIComponent(emailContent);
+            const mailtoLink = `mailto:e2029956@gmail.com?subject=${subject}&body=${body}`;
+            
+            // Открываем почтовый клиент
+            window.location.href = mailtoLink;
+            
+            // Закрываем модальное окно
+            closeSubmitModal();
+            
+            // Показываем уведомление
+            showNotification('Opening your email client to submit your tasks...');
+        }
+        
+        // Функции для Drag and Drop
+        function initDragDrop() {
+            const dragItems = document.querySelectorAll('.drag-item');
+            const dropZones = document.querySelectorAll('.drop-zone');
+            
+            dragItems.forEach(item => {
+                item.addEventListener('dragstart', handleDragStart);
+                item.addEventListener('dragend', handleDragEnd);
+            });
+            
+            dropZones.forEach(zone => {
+                zone.addEventListener('dragover', handleDragOver);
+                zone.addEventListener('drop', handleDrop);
+                zone.addEventListener('dragleave', handleDragLeave);
+            });
+        }
+        
+        function handleDragStart(e) {
+            e.dataTransfer.setData('text/plain', e.target.dataset.character);
+            e.target.style.opacity = '0.5';
+        }
+        
+        function handleDragEnd(e) {
+            e.target.style.opacity = '1';
+        }
+        
+        function handleDragOver(e) {
+            e.preventDefault();
+            e.currentTarget.classList.add('drag-over');
+        }
+        
+        function handleDragLeave(e) {
+            e.currentTarget.classList.remove('drag-over');
+        }
+        
+        function handleDrop(e) {
+            e.preventDefault();
+            const character = e.dataTransfer.getData('text/plain');
+            const dropZone = e.currentTarget;
+            
+            dropZone.classList.remove('drag-over');
+            
+            // Проверяем, не занята ли зона
+            if (dropZone.querySelector('.dropped-item')) {
+                return;
+            }
+            
+            // Создаем элемент с именем персонажа
+            const droppedItem = document.createElement('div');
+            droppedItem.className = 'dropped-item';
+            droppedItem.textContent = character.charAt(0).toUpperCase() + character.slice(1);
+            droppedItem.dataset.character = character;
+            
+            dropZone.appendChild(droppedItem);
+        }
+        
+        function checkDragDrop() {
+            const correctMatches = {
+                'redemption': 'pryce',
+                'opportunity': 'santi',
+                'protection': 'amber-linn'
+            };
+            
+            let allCorrect = true;
+            const feedback = document.getElementById('dragdrop-feedback');
+            let feedbackText = '';
+            
+            for (const [goal, character] of Object.entries(correctMatches)) {
+                const dropZone = document.querySelector(`[data-goal="${goal}"]`);
+                const droppedItem = dropZone.querySelector('.dropped-item');
+                
+                if (!droppedItem) {
+                    feedbackText += `${goal.charAt(0).toUpperCase() + goal.slice(1)}: No character matched. `;
+                    allCorrect = false;
+                    continue;
+                }
+                
+                if (droppedItem.dataset.character === character) {
+                    dropZone.style.borderColor = 'var(--success)';
+                    feedbackText += `${goal.charAt(0).toUpperCase() + goal.slice(1)}: Correct! `;
+                } else {
+                    dropZone.style.borderColor = 'var(--accent)';
+                    feedbackText += `${goal.charAt(0).toUpperCase() + goal.slice(1)}: Incorrect. `;
+                    allCorrect = false;
+                }
+            }
+            
+            if (allCorrect) {
+                feedback.textContent = "All matches are correct! Well done.";
+                feedback.className = "feedback correct";
+            } else {
+                feedback.textContent = feedbackText;
+                feedback.className = "feedback incorrect";
+            }
+            
+            feedback.style.display = "block";
+        }
+        
+        // Функции для Quiz
+        function selectQuizOption(element, answer) {
+            // Убираем выделение со всех опций в этом вопросе
+            const questionContainer = element.parentElement;
+            const options = questionContainer.querySelectorAll('.quiz-option');
+            options.forEach(opt => opt.classList.remove('selected'));
+            
+            // Выделяем выбранную опцию
+            element.classList.add('selected');
+            
+            // Определяем номер вопроса
+            const questionNumber = element.parentElement.previousElementSibling.textContent.match(/\d+/)[0];
+            const resultElement = document.getElementById(`quiz-result-${questionNumber}`);
+            
+            // Проверяем ответ
+            const correctAnswers = {
+                '1': 'b',
+                '2': 'b',
+                '3': 'c'
+            };
+            
+            if (answer === correctAnswers[questionNumber]) {
+                resultElement.textContent = 'Correct!';
+                resultElement.className = 'quiz-result correct show';
+            } else {
+                resultElement.textContent = 'Incorrect. Try again.';
+                resultElement.className = 'quiz-result incorrect show';
+            }
+        }
+        
+        // Функции для игры Мемори
+        let memoryGameContainer, memoryStatusElem, memoryRestartBtn, memoryShowAnswersBtn;
+        let memoryCards = [];
+        let memoryIsShowingAnswers = false;
+        let memoryFlippedCards = [];
+        let memoryMatchedPairs = 0;
+        
+        function memoryResetGame() {
+            memoryMatchedPairs = 0;
+            memoryFlippedCards = [];
+            memoryIsShowingAnswers = false;
+            
+            memoryShowAnswersBtn.textContent = 'Показать ответы';
+            memoryShowAnswersBtn.style.background = 'white';
+            memoryShowAnswersBtn.style.color = '#3498db';
+            memoryShowAnswersBtn.style.border = '2px solid #3498db';
+            
+            memoryShuffle(memoryCards);
+            memoryGameContainer.innerHTML = '';
+            memoryCards.forEach((c, idx) => {
+                memoryGameContainer.appendChild(memoryCreateCardElement(c, idx));
+            });
+            memoryUpdateStatus();
+        }
+        
+        function memoryShowAnswers() {
+            memoryIsShowingAnswers = !memoryIsShowingAnswers;
+            const allCards = document.querySelectorAll('.memory-game-container .card');
+            
+            if (memoryIsShowingAnswers) {
+                allCards.forEach(card => {
+                    if (!card.classList.contains('matched')) {
+                        card.classList.add('revealed');
+                    }
+                });
+                memoryShowAnswersBtn.textContent = 'Скрыть ответы';
+                memoryShowAnswersBtn.style.background = '#e74c3c';
+                memoryShowAnswersBtn.style.color = 'white';
+                memoryShowAnswersBtn.style.border = '2px solid #e74c3c';
+            } else {
+                allCards.forEach(card => {
+                    if (!card.classList.contains('matched')) {
+                        card.classList.remove('revealed', 'flipped');
+                    }
+                });
+                memoryShowAnswersBtn.textContent = 'Показать ответы';
+                memoryShowAnswersBtn.style.background = 'white';
+                memoryShowAnswersBtn.style.color = '#3498db';
+                memoryShowAnswersBtn.style.border = '2px solid #3498db';
+                memoryFlippedCards = [];
+            }
+        }
+        
+        function memoryShuffle(array) {
+            for(let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+        
+        function memoryCreateCardElement(cardData, index) {
+            const card = document.createElement('div');
+            card.classList.add('card');
+            card.dataset.pairId = cardData.pairId;
+            card.dataset.type = cardData.type;
+            card.dataset.index = index;
+            card.innerHTML = `
+                <div class="card-inner">
+                    <div class="card-front">?</div>
+                    <div class="card-back">${cardData.content}</div>
+                </div>
+            `;
+            card.onclick = () => memoryOnCardClick(card);
+            return card;
+        }
+        
+        function memoryOnCardClick(card) {
+            if (memoryIsShowingAnswers) {
+                return;
+            }
+            
+            if (memoryFlippedCards.length === 2 || card.classList.contains('flipped') || card.classList.contains('matched') || card.classList.contains('revealed')) {
+                return;
+            }
+            card.classList.add('flipped');
+            memoryFlippedCards.push(card);
+            if (memoryFlippedCards.length === 2) {
+                memoryCheckMatch();
+            }
+        }
+        
+        function memoryCheckMatch() {
+            const [card1, card2] = memoryFlippedCards;
+            const samePair = card1.dataset.pairId === card2.dataset.pairId;
+            const differentType = card1.dataset.type !== card2.dataset.type;
+            if (samePair && differentType) {
+                card1.classList.add('matched');
+                card2.classList.add('matched');
+                memoryMatchedPairs++;
+                memoryUpdateStatus();
+                memoryFlippedCards = [];
+                if (memoryMatchedPairs === memoryPairsData.length) {
+                    setTimeout(() => {
+                        alert('Поздравляем! Вы нашли все пары идиом!');
+                    }, 500);
+                }
+            } else {
+                setTimeout(() => {
+                    card1.classList.remove('flipped');
+                    card2.classList.remove('flipped');
+                    memoryFlippedCards = [];
+                }, 1200);
+            }
+        }
+        
+        function memoryUpdateStatus() {
+            memoryStatusElem.textContent = `Открыто пар: ${memoryMatchedPairs} из ${memoryPairsData.length}`;
+        }
+        
+        function memoryInitGame() {
+            memoryGameContainer = document.getElementById('memory-game');
+            memoryStatusElem = document.getElementById('memory-status');
+            memoryRestartBtn = document.getElementById('memory-restartBtn');
+            memoryShowAnswersBtn = document.getElementById('memory-showAnswersBtn');
+            
+            memoryCards = [];
+            memoryPairsData.forEach((pair, idx) => {
+                memoryCards.push({type: 'question', content: pair.question, pairId: idx});
+                memoryCards.push({type: 'answer', content: pair.answer, pairId: idx});
+            });
+            memoryResetGame();
+        }
+        
+        // Функции для Flashcards
+        function createFlashcards() {
+            const container = document.getElementById('flashcards-container');
+            container.innerHTML = '';
+            
+            flashcardsData.forEach((card, index) => {
+                const flashcard = document.createElement('div');
+                flashcard.className = 'flashcard';
+                flashcard.innerHTML = `
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">
+                            ${card.term}
+                        </div>
+                        <div class="flashcard-back">
+                            ${card.definition}
+                        </div>
+                    </div>
+                `;
+                flashcard.onclick = () => flipCard(flashcard);
+                container.appendChild(flashcard);
+            });
+        }
+        
+        function flipCard(card) {
+            card.classList.toggle('flipped');
+        }
+        
+        function flipAllCards() {
+            const cards = document.querySelectorAll('.flashcard');
+            cards.forEach(card => {
+                card.classList.add('flipped');
+            });
+        }
+        
+        function resetAllCards() {
+            const cards = document.querySelectorAll('.flashcard');
+            cards.forEach(card => {
+                card.classList.remove('flipped');
+            });
+        }
+        
+        // Функции для Timeline
+        function initTimeline() {
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            const timeline = document.getElementById('timeline');
+            
+            timelineItems.forEach(item => {
+                item.addEventListener('dragstart', handleTimelineDragStart);
+                item.addEventListener('dragover', handleTimelineDragOver);
+                item.addEventListener('drop', handleTimelineDrop);
+                item.addEventListener('dragend', handleTimelineDragEnd);
+            });
+        }
+        
+        function handleTimelineDragStart(e) {
+            e.dataTransfer.setData('text/plain', e.target.dataset.order);
+            e.target.classList.add('dragging');
+        }
+        
+        function handleTimelineDragOver(e) {
+            e.preventDefault();
+            const draggingItem = document.querySelector('.dragging');
+            const afterElement = getDragAfterElement(document.getElementById('timeline'), e.clientY);
+            
+            if (afterElement == null) {
+                document.getElementById('timeline').appendChild(draggingItem);
+            } else {
+                document.getElementById('timeline').insertBefore(draggingItem, afterElement);
+            }
+        }
+        
+        function handleTimelineDrop(e) {
+            e.preventDefault();
+        }
+        
+        function handleTimelineDragEnd(e) {
+            e.target.classList.remove('dragging');
+        }
+        
+        function getDragAfterElement(container, y) {
+            const draggableElements = [...container.querySelectorAll('.timeline-item:not(.dragging)')];
+            
+            return draggableElements.reduce((closest, child) => {
+                const box = child.getBoundingClientRect();
+                const offset = y - box.top - box.height / 2;
+                
+                if (offset < 0 && offset > closest.offset) {
+                    return { offset: offset, element: child };
+                } else {
+                    return closest;
+                }
+            }, { offset: Number.NEGATIVE_INFINITY }).element;
+        }
+        
+        function checkTimelineOrder() {
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            const feedback = document.getElementById('timeline-feedback');
+            let isCorrect = true;
+            
+            timelineItems.forEach((item, index) => {
+                const expectedOrder = index + 1;
+                const actualOrder = parseInt(item.dataset.order);
+                
+                if (expectedOrder !== actualOrder) {
+                    isCorrect = false;
+                }
+            });
+            
+            if (isCorrect) {
+                feedback.textContent = "Correct! The events are in the right order.";
+                feedback.className = "timeline-feedback correct";
+            } else {
+                feedback.textContent = "Incorrect. Please try again.";
+                feedback.className = "timeline-feedback incorrect";
+            }
+            
+            feedback.style.display = "block";
+        }
+        
+        // Функции для проверки ИИ
+        function checkAIResponse(elementId, keywords) {
+            const element = document.getElementById(elementId);
+            const response = element.value.trim().toLowerCase();
+            const checkElement = document.getElementById(`ai-check-${elementId}`);
+            
+            if (!response) {
+                checkElement.innerHTML = '<h4>AI Feedback</h4><div class="ai-feedback needs-improvement">Please provide a response before checking.</div>';
+                checkElement.classList.add('show');
+                return;
+            }
+            
+            // Простая проверка на наличие ключевых слов
+            const keywordArray = keywords.split(',');
+            let foundKeywords = [];
+            
+            keywordArray.forEach(keyword => {
+                if (response.includes(keyword.trim())) {
+                    foundKeywords.push(keyword.trim());
+                }
+            });
+            
+            // Проверка длины ответа
+            const wordCount = response.split(/\s+/).length;
+            
+            let feedback = '<h4>AI Feedback</h4>';
+            
+            if (foundKeywords.length >= keywordArray.length / 2 && wordCount >= 10) {
+                feedback += '<div class="ai-feedback good">Good response! You\'ve included relevant keywords and provided sufficient detail.</div>';
+            } else {
+                feedback += '<div class="ai-feedback needs-improvement">Your response could be improved. ';
+                
+                if (foundKeywords.length < keywordArray.length / 2) {
+                    feedback += 'Try to include more relevant keywords such as: ' + keywordArray.join(', ') + '. ';
+                }
+                
+                if (wordCount < 10) {
+                    feedback += 'Please provide more detail in your response.';
+                }
+                
+                feedback += '</div>';
+            }
+            
+            checkElement.innerHTML = feedback;
+            checkElement.classList.add('show');
+        }
+        
+        // Функции для проверки разных заданий с ИИ
+        function checkAISentences() {
+            checkAIResponse('sentence1', 'choke,pressure,nervous,fail');
+            checkAIResponse('sentence2', 'mull,think,consider,decision');
+            checkAIResponse('sentence3', 'has-been,former,past,success');
+        }
+        
+        function checkAISpeech() {
+            checkAIResponse('speech1', 'said,that,couldn\'t,coaching');
+            checkAIResponse('speech2', 'told,had to,property transfer');
+            checkAIResponse('speech3', 'asked,if,had,time,meet');
+            checkAIResponse('speech4', 'said,was not,interested,playing');
+            checkAIResponse('speech5', 'said,property transfer,was,final');
+        }
+        
+        function checkAICharacterDesc() {
+            checkAIResponse('character-desc', 'physical,personality,traits,appearance');
+        }
+        
+        function checkAIDiscussion() {
+            checkAIResponse('discussion1', 'idioms,expressions,interesting,why');
+            checkAIResponse('discussion2', 'Pryce,decision,coach,Santi,opinion');
+            checkAIResponse('discussion3', 'second chance,experience,feelings,personal');
+        }
+        
+        function checkAIRetelling() {
+            checkAIResponse('retelling', 'Pryce,Santi,meeting,coach,idioms');
+        }
+        
+        function checkAICreative() {
+            checkAIResponse('creative', 'Santi,refused,offer,ending,idioms');
+        }
+        
+        function checkAICharacterAnalysis() {
+            checkAIResponse('character-analysis', 'motivations,goals,strengths,weaknesses,past,relationship');
+        }
+        
+        function checkAIEthical() {
+            checkAIResponse('ethical1', 'ethical,share,winnings,motivation,financial');
+            checkAIResponse('ethical2', 'honest,motivations,transparency,ethics');
+            checkAIResponse('ethical3', 'responsibilities,coach,student,mentorship,duty');
+        }
+        
+        function checkAIPrediction() {
+            checkAIResponse('prediction1', 'relationship,mother,evolve,develop,change');
+            checkAIResponse('prediction2', 'partnership,successful,reasons,outcome');
+            checkAIResponse('prediction3', 'challenges,face,together,obstacles,difficulties');
+        }
+        
+        function checkAIReflection() {
+            checkAIResponse('reflection1', 'second chance,handle,experience,personal');
+            checkAIResponse('reflection2', 'getting back,feet,personal meaning,recovery');
+            checkAIResponse('reflection3', 'pressure,situations,strategies,handle,coping');
+        }
+        
+        function checkAIGolf() {
+            checkAIResponse('golf1', 'golf,American,society,status,networking,culture');
+            checkAIResponse('golf2', 'golf,world,portrayed,episode,representation');
+            checkAIResponse('golf3', 'golf,America,sports,culture,country,compare');
+        }
+        
+        function checkAIDream() {
+            checkAIResponse('dream1', 'Pryce,Santi,American Dream,aspects,represent');
+            checkAIResponse('dream2', 'episode,success,failure,America,suggest,theme');
+            checkAIResponse('dream3', 'episode,critique,reinforce,American,values,theme');
+        }
+        
+        function checkAIIdiom() {
+            checkAIResponse('idiom1', 'wet my beak,American,business,culture,reflect,values');
+            checkAIResponse('idiom2', 'get back on your feet,American,attitudes,resilience,reveal,values');
+            checkAIResponse('idiom3', 'has-been,American,culture,youth,success,focus,reflect');
+        }
+        
+        function checkAIMedia() {
+            checkAIResponse('media1', 'athletes,portrayed,episode,representation,media');
+            checkAIResponse('media2', 'episode,suggest,mentorship,relationships,dynamic');
+            checkAIResponse('media3', 'episode,represent,family,dynamics,American,culture');
+        }
+        
+        // Функция для обновления прогресса
+        function updateProgress() {
+            let completedFields = 0;
+            const totalFields = requiredFields.length;
+            
+            requiredFields.forEach(field => {
+                const element = document.getElementById(field.id);
+                if (element && element.value.trim() !== '') {
+                    completedFields++;
+                }
+            });
+            
+            const progressPercentage = Math.round((completedFields / totalFields) * 100);
+            const progressFill = document.getElementById('progress-fill');
+            const progressText = document.getElementById('progress-text');
+            const submitBtn = document.getElementById('final-submit-btn');
+            
+            progressFill.style.width = progressPercentage + '%';
+            progressText.textContent = `${progressPercentage}% Complete (${completedFields}/${totalFields} tasks)`;
+            
+            // Активируем кнопку отправки, если все поля заполнены
+            if (completedFields === totalFields) {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit All Tasks';
+            } else {
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Complete All Tasks to Submit';
+            }
+        }
+        
+        // Функция для проверки всех задач и отправки
+        function checkAllTasksAndSubmit() {
+            let allCompleted = true;
+            let incompleteTasks = [];
+            
+            requiredFields.forEach(field => {
+                const element = document.getElementById(field.id);
+                if (!element || element.value.trim() === '') {
+                    allCompleted = false;
+                    incompleteTasks.push(field.name);
+                }
+            });
+            
+            if (allCompleted) {
+                openSubmitModal('all');
+            } else {
+                showNotification(`Please complete the following tasks: ${incompleteTasks.join(', ')}`, true);
+                
+                // Переключаемся на вкладку с первой незавершенной задачей
+                const firstIncomplete = requiredFields.find(field => {
+                    const element = document.getElementById(field.id);
+                    return !element || element.value.trim() === '';
+                });
+                
+                if (firstIncomplete) {
+                    // Находим вкладку с этой задачей
+                    const tabButton = document.querySelector(`.tab:nth-child(${getTabIndex(firstIncomplete.tab)})`);
+                    if (tabButton) {
+                        tabButton.click();
+                        
+                        // Прокручиваем к элементу
+                        setTimeout(() => {
+                            const element = document.getElementById(firstIncomplete.id);
+                            if (element) {
+                                element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                element.focus();
+                            }
+                        }, 300);
+                    }
+                }
+            }
+        }
+        
+        // Вспомогательная функция для получения индекса вкладки
+        function getTabIndex(tabName) {
+            const tabs = ['vocabulary', 'grammar', 'listening', 'speaking', 'critical', 'cultural', 'interactive'];
+            return tabs.indexOf(tabName) + 1;
+        }
+        
+        // Закрытие модального окна при клике вне его
+        window.onclick = function(event) {
+            const modal = document.getElementById('submitModal');
+            if (event.target === modal) {
+                closeSubmitModal();
+            }
+        }
+        
+        // Инициализация при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            memoryInitGame();
+            createFlashcards();
+            initDragDrop();
+            initTimeline();
+            updateProgress();
+            
+            // Добавляем обработчики событий для отслеживания изменений в полях
+            requiredFields.forEach(field => {
+                const element = document.getElementById(field.id);
+                if (element) {
+                    element.addEventListener('input', updateProgress);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
